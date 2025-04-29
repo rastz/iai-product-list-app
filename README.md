@@ -1,2 +1,7 @@
-# iai-product-list-app
-Simple demo application for displaying and managing a list of products
+<!-- @todo -->
+
+Add base docs:
+
+1. How to run the app
+2. What can you find here (stack used)
+3. What the app does
