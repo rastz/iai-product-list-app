@@ -1,4 +1,3 @@
-import { Fragment } from "react/jsx-runtime";
 import { Box } from "./components/Box";
 import { Button } from "./components/Button";
 import { Grid } from "./components/Grid";
@@ -13,9 +12,16 @@ import { TableHeader } from "./components/TableHeader";
 import { TableRow } from "./components/TableRow";
 import data from "./data/products.json";
 import { Product } from "./types";
+import { useSort } from "./hooks/useSort";
+import { SortableTableHead } from "./components/SortableTableHead";
 
 function App() {
-  const products: Product[] = data.items;
+  const { sortedData, sortKey, direction, toggleSort } = useSort<Product>({
+    data: data.items,
+    defaultSortKey: "id",
+  });
+
+  const toggleSortBy = (key: keyof Product) => () => toggleSort(key);
 
   return (
     <Main>
@@ -26,17 +32,50 @@ function App() {
 
             <TableHeader>
               <TableRow>
-                <TableHead scope="col">ID</TableHead>
-                <TableHead scope="col">Name</TableHead>
+                <SortableTableHead
+                  scope="col"
+                  onClick={toggleSortBy("id")}
+                  isActive={sortKey === "id"}
+                  sortDirection={direction}
+                >
+                  ID
+                </SortableTableHead>
+
+                <SortableTableHead
+                  scope="col"
+                  onClick={toggleSortBy("name")}
+                  isActive={sortKey === "name"}
+                  sortDirection={direction}
+                >
+                  Name
+                </SortableTableHead>
+
                 <TableHead scope="col">Icon</TableHead>
-                <TableHead scope="col">Price</TableHead>
-                <TableHead scope="col">Stock</TableHead>
+
+                <SortableTableHead
+                  scope="col"
+                  onClick={toggleSortBy("price")}
+                  isActive={sortKey === "price"}
+                  sortDirection={direction}
+                >
+                  Price
+                </SortableTableHead>
+
+                <SortableTableHead
+                  scope="col"
+                  onClick={toggleSortBy("stock")}
+                  isActive={sortKey === "stock"}
+                  sortDirection={direction}
+                >
+                  Stock
+                </SortableTableHead>
+
                 <TableHead scope="col">Actions</TableHead>
               </TableRow>
             </TableHeader>
 
             <TableBody>
-              {products.map((product) => {
+              {sortedData.map((product) => {
                 return (
                   <TableRow key={product.id}>
                     <TableHead scope="row">{product.id}</TableHead>
