@@ -1,0 +1,104 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Product A",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 19.99,
+      "stock": 120
+    },
+    {
+      "id": 2,
+      "name": "Product B",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 49.99,
+      "stock": 35
+    },
+    {
+      "id": 3,
+      "name": "Product C",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    },
+    {
+      "id": 4,
+      "name": "Product C",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    },
+    {
+      "id": 5,
+      "name": "Product D",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    },
+    {
+      "id": 6,
+      "name": "Product E",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    },
+    {
+      "id": 7,
+      "name": "Product F",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    },
+    {
+      "id": 8,
+      "name": "Product H",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    },
+    {
+      "id": 9,
+      "name": "Product I",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    },
+    {
+      "id": 10,
+      "name": "Product J",
+      "img": {
+        "url": "https://placehold.co/600x400?font=montserrat",
+        "alt": ""
+      },
+      "price": 9.99,
+      "stock": 0
+    }
+  ]
+}
