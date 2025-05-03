@@ -1,3 +1,4 @@
+import { Fragment } from "react/jsx-runtime";
 import { Box } from "./components/Box";
 import { Button } from "./components/Button";
 import { Grid } from "./components/Grid";
@@ -10,8 +11,12 @@ import { TableCell } from "./components/TableCell";
 import { TableHead } from "./components/TableHead";
 import { TableHeader } from "./components/TableHeader";
 import { TableRow } from "./components/TableRow";
+import data from "./data/products.json";
+import { Product } from "./types";
 
 function App() {
+  const products: Product[] = data.items;
+
   return (
     <Main>
       <Section>
@@ -31,27 +36,31 @@ function App() {
             </TableHeader>
 
             <TableBody>
-              <TableRow>
-                <TableHead scope="row">1</TableHead>
+              {products.map((product) => {
+                return (
+                  <TableRow key={product.id}>
+                    <TableHead scope="row">{product.id}</TableHead>
 
-                <TableCell>Product Name</TableCell>
-                <TableCell>
-                  <img
-                    src="https://placehold.co/600x400?font=montserrat"
-                    alt=""
-                    width="50"
-                    height="50"
-                  />
-                </TableCell>
-                <TableCell>$99.99</TableCell>
-                <TableCell>37</TableCell>
-                <TableCell>
-                  <Grid>
-                    <Button variant="primary">Edit</Button>
-                    <Button variant="secondary">Delete</Button>
-                  </Grid>
-                </TableCell>
-              </TableRow>
+                    <TableCell>{product.name}</TableCell>
+                    <TableCell>
+                      <img
+                        src={product.img.url}
+                        alt={product.img.alt}
+                        width="50"
+                        height="50"
+                      />
+                    </TableCell>
+                    <TableCell>{product.price}</TableCell>
+                    <TableCell>{product.stock}</TableCell>
+                    <TableCell>
+                      <Grid>
+                        <Button variant="primary">Edit</Button>
+                        <Button variant="secondary">Delete</Button>
+                      </Grid>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </Box>
