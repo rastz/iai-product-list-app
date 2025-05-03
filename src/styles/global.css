@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+html, body {
+  height: 100dvh;
+}
+
+/*
+* Always ensure the space above the fold is filled.
+*/
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
