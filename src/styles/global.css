@@ -5,6 +5,17 @@ html, body {
 }
 
 /*
+ * Reserve space for the scrollbar, preventing unwanted layout changes
+ *
+ * This is a relatively new feature, but it's been supported in all major browsers since December 2024.
+ * It's reliable enough to use confidently. Learn more about 'scrollbar-gutter': 
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter
+ */
+html {
+  scrollbar-gutter: stable;
+}
+
+/*
 * Always ensure the space above the fold is filled.
 */
 #root {
