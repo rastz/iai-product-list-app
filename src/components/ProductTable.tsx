@@ -207,8 +207,6 @@ function ProductTable({ data }: ProductTableProps) {
             ))
           )}
         </TableBody>
-
-        <TableCaption>End of list</TableCaption>
       </Table>
     </div>
   );
