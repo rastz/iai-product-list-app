@@ -4,8 +4,11 @@ import { Section } from "./components/Section";
 import { ProductTable } from "./components/ProductTable";
 
 import data from "./data/products.json";
+import { useFixRadixScrollLock } from "./hooks/useFixRadixScrollLock";
 
 function App() {
+  useFixRadixScrollLock();
+
   return (
     <Main>
       <Section>
