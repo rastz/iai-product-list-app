@@ -5,7 +5,7 @@ type TableCellProps = ComponentProps<"td">;
 function TableCell({ children, ...restProps }: TableCellProps) {
   return (
     <td
-      className="p-1 align-middle text-center whitespace-nowrap"
+      className="p-10 align-middle text-center whitespace-nowrap"
       {...restProps}
     >
       {children}
