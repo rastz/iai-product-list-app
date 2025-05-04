@@ -34,7 +34,7 @@ function ProductTable({ data }: ProductTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [items, setItems] = useState(data);
+  const [products, setProducts] = useState(data);
   const [removeProduct, setRemoveProduct] = useState<Product | null>(null);
   const [editProduct, setEditProduct] = useState<Product | null>(null);
 
@@ -153,7 +153,7 @@ function ProductTable({ data }: ProductTableProps) {
   ];
 
   const table = useReactTable({
-    data: items,
+    data: products,
     columns,
     state: { sorting, globalFilter, columnFilters },
     globalFilterFn: "includesString",
@@ -247,7 +247,7 @@ function ProductTable({ data }: ProductTableProps) {
           confirmLabel="Remove"
           cancelLabel="Cancel"
           onConfirm={() =>
-            setItems((prev) =>
+            setProducts((prev) =>
               prev.filter((item) => item.id !== removeProduct.id),
             )
           }
@@ -260,7 +260,7 @@ function ProductTable({ data }: ProductTableProps) {
           product={editProduct}
           onClose={() => setEditProduct(null)}
           onSave={(updatedProduct) => {
-            setItems((prev) =>
+            setProducts((prev) =>
               prev.map((item) =>
                 item.id === updatedProduct.id ? updatedProduct : item,
               ),
