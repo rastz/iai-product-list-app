@@ -2,9 +2,9 @@
   "items": [
     {
       "id": 8,
-      "name": "Q",
+      "name": "Wireless Headphones",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/8/600",
         "alt": ""
       },
       "price": 57.23,
@@ -12,9 +12,9 @@
     },
     {
       "id": 3,
-      "name": "W",
+      "name": "USB-C Charger",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/3/600",
         "alt": ""
       },
       "price": 12.49,
@@ -22,9 +22,9 @@
     },
     {
       "id": 10,
-      "name": "E",
+      "name": "Gaming Monitor",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/10/600",
         "alt": ""
       },
       "price": 88.0,
@@ -32,9 +32,9 @@
     },
     {
       "id": 1,
-      "name": "R",
+      "name": "Bluetooth Speaker",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/1/600",
         "alt": ""
       },
       "price": 23.75,
@@ -42,9 +42,9 @@
     },
     {
       "id": 6,
-      "name": "T",
+      "name": "Mechanical Keyboard",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/6/600",
         "alt": ""
       },
       "price": 76.34,
@@ -52,9 +52,9 @@
     },
     {
       "id": 2,
-      "name": "Y",
+      "name": "Portable SSD",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/2/600",
         "alt": ""
       },
       "price": 9.57,
@@ -62,9 +62,9 @@
     },
     {
       "id": 9,
-      "name": "U",
+      "name": "Smart LED Bulb",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/9/600",
         "alt": ""
       },
       "price": 5.12,
@@ -72,9 +72,9 @@
     },
     {
       "id": 5,
-      "name": "I",
+      "name": "Noise Cancelling Earbuds",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/5/600",
         "alt": ""
       },
       "price": 100.0,
@@ -82,9 +82,9 @@
     },
     {
       "id": 7,
-      "name": "O",
+      "name": "Wireless Mouse",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/7/600",
         "alt": ""
       },
       "price": 19.66,
@@ -92,9 +92,9 @@
     },
     {
       "id": 4,
-      "name": "P",
+      "name": "HDMI Cable",
       "img": {
-        "url": "https://placehold.co/600x400?font=montserrat",
+        "url": "https://picsum.photos/id/4/600",
         "alt": ""
       },
       "price": 45.55,
