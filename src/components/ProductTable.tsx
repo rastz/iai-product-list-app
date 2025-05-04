@@ -21,7 +21,7 @@ import { Button } from "./Button";
 import { Fragment, useState } from "react";
 import { SortableTableHead } from "./SortableTableHead";
 import { Input } from "./Input";
-import { FiltersButton } from "./FiltersButton";
+import { Filters } from "./Filters";
 
 interface ProductTableProps {
   data: Product[];
@@ -165,7 +165,7 @@ function ProductTable({ data }: ProductTableProps) {
           onChange={(event) => setGlobalFilter(event.target.value)}
         />
 
-        <FiltersButton table={table} />
+        <Filters table={table} />
       </div>
 
       <Table>
