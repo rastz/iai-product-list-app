@@ -90,9 +90,14 @@ export function EditProductDialog({
             "md:animate-none": !md,
           })}
         >
-          <Dialog.Title className="text-lg font-medium">
-            Edit Product
-          </Dialog.Title>
+          <div className="flex flex-col gap-y-0.5">
+            <Dialog.Title className="text-lg font-medium">
+              Edit Product
+            </Dialog.Title>
+            <Dialog.Description className="text-sm text-gray-500">
+              Name, Price or Stock
+            </Dialog.Description>
+          </div>
 
           <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
             <label className="flex flex-col gap-y-1 text-sm font-medium">
