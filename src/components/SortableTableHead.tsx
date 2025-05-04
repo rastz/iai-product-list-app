@@ -30,12 +30,12 @@ function SortableTableHead({
 
   return (
     <th
-      className="p-10 text-center align-middle font-medium whitespace-nowrap cursor-pointer select-none"
+      className="w-80 cursor-pointer p-10 text-center align-middle font-medium whitespace-nowrap select-none"
       {...restProps}
     >
-      <div className="hover:cursor-pointer w-full h-full flex justify-center items-center">
+      <div className="flex h-full w-full items-center justify-center hover:cursor-pointer">
         <p>{children}</p>
-        <div className="w-6 h-6 flex justify-center items-center">{arrow}</div>
+        <div className="flex h-6 w-6 items-center justify-center">{arrow}</div>
       </div>
     </th>
   );
