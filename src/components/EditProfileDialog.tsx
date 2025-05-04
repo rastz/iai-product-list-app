@@ -1,8 +1,9 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { useState, useEffect } from "react";
+import clsx from "clsx";
+import { z } from "zod";
+import { useState, useEffect, FormEvent } from "react";
 import { Product } from "../types";
 import { Button } from "./Button";
-import clsx from "clsx";
 import { useMedia } from "react-use";
 import { Input } from "./Input";
 
@@ -12,33 +13,71 @@ interface EditProductDialogProps {
   onSave: (updatedProduct: Product) => void;
 }
 
+export type ProductFormInput = z.infer<typeof productFormSchema>;
+
+const productFormSchema = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters"),
+  price: z.number().nonnegative("Price must be a positive number"),
+  stock: z.number().int().nonnegative("Stock must be 0 or positive number"),
+});
+
 const BASE_DIALOG_CLASSES =
-  "fixed right-0 bottom-0 left-0 z-50 flex max-h-1/2 flex-col gap-y-4 overflow-auto rounded-t-xl bg-white p-4 shadow-lg md:top-1/2 md:right-auto md:bottom-auto md:left-1/2 md:max-w-sm md:-translate-x-1/2 md:-translate-y-1/2 md:animate-none md:rounded-lg md:p-6";
+  "fixed right-0 bottom-0 left-0 z-50 flex min-w-80 max-h-2/3 flex-col gap-y-4 overflow-auto rounded-t-xl bg-white p-4 shadow-lg md:top-1/2 md:right-auto md:bottom-auto md:left-1/2 md:max-w-sm md:-translate-x-1/2 md:-translate-y-1/2 md:animate-none md:rounded-lg md:p-6";
 
 export function EditProductDialog({
   product,
   onClose,
   onSave,
 }: EditProductDialogProps) {
-  const [name, setName] = useState(product.name);
-  const [price, setPrice] = useState(product.price);
-  const [stock, setStock] = useState(product.stock);
-  /**
-   * This 'max-width' match with Tailwind 'md' breakpoint
-   */
-  const md = useMedia(`(max-width: 768px`);
+  const [formState, setFormState] = useState<ProductFormInput>({
+    name: product.name,
+    price: product.price,
+    stock: product.stock,
+  });
+
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof ProductFormInput, string>>
+  >({});
+
+  const md = useMedia(`(max-width: 768px)`);
 
   /**
    * Keep form in sync if dialog is opened again with different product
    */
   useEffect(() => {
-    setName(product.name);
-    setPrice(product.price);
-    setPrice(product.stock);
+    setFormState({
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+    });
+    setErrors({});
   }, [product]);
 
-  const handleSave = () => {
-    onSave({ ...product, name, price, stock });
+  const handleChange = (key: keyof ProductFormInput, value: string) => {
+    setFormState((prev) => ({
+      ...prev,
+      [key]: key === "name" ? value : Number(value),
+    }));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const result = productFormSchema.safeParse(formState);
+
+    if (result.error) {
+      const fieldErrors = result.error.flatten().fieldErrors;
+
+      setErrors({
+        name: fieldErrors.name?.[0],
+        price: fieldErrors.price?.[0],
+        stock: fieldErrors.stock?.[0],
+      });
+
+      return null;
+    }
+
+    onSave({ ...product, ...result.data });
+    onClose();
   };
 
   return (
@@ -55,41 +94,34 @@ export function EditProductDialog({
             Edit Product
           </Dialog.Title>
 
-          <form
-            className="flex flex-col gap-3"
-            onSubmit={(event) => {
-              event.preventDefault();
-              handleSave();
-            }}
-          >
-            <label className="text-sm font-medium">
+          <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+            <label className="flex flex-col gap-y-1 text-sm font-medium">
               Name
               <Input
-                required
-                minLength={3}
-                className="mt-1 w-full rounded border px-2 py-1"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
+                type="text"
+                errorMessage={errors.name}
+                value={formState.name}
+                onChange={(event) => handleChange("name", event.target.value)}
               />
             </label>
 
-            <label className="text-sm font-medium">
+            <label className="flex flex-col gap-y-1 text-sm font-medium">
               Price
               <Input
                 type="number"
-                className="mt-1 w-full rounded border px-2 py-1"
-                value={price}
-                onChange={(event) => setPrice(Number(event.target.value))}
+                errorMessage={errors.price}
+                value={formState.price}
+                onChange={(event) => handleChange("price", event.target.value)}
               />
             </label>
 
-            <label className="text-sm font-medium">
+            <label className="flex flex-col gap-y-1 text-sm font-medium">
               Stock
               <Input
                 type="number"
-                className="mt-1 w-full rounded border px-2 py-1"
-                value={stock}
-                onChange={(event) => setStock(Number(event.target.value))}
+                errorMessage={errors.stock}
+                value={formState.stock}
+                onChange={(event) => handleChange("stock", event.target.value)}
               />
             </label>
 
@@ -99,11 +131,9 @@ export function EditProductDialog({
                   Cancel
                 </Button>
               </Dialog.Close>
-              <Dialog.Close asChild>
-                <Button variant="primary" onClick={handleSave} type="submit">
-                  Save
-                </Button>
-              </Dialog.Close>
+              <Button variant="primary" type="submit">
+                Save
+              </Button>
             </div>
           </form>
         </Dialog.Content>
