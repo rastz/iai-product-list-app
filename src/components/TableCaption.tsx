@@ -5,7 +5,7 @@ type TableCaptionProps = ComponentProps<"caption">;
 function TableCaption({ children, ...restProps }: TableCaptionProps) {
   return (
     <caption
-      className="text-xl font-bold text-neutral-700 text-left"
+      className="text-3xl font-bold text-neutral-700 text-left"
       {...restProps}
     >
       {children}
