@@ -22,6 +22,7 @@ import { SortableTableHead } from "./SortableTableHead";
 import { Input } from "./Input";
 import { Filters } from "./Filters";
 import { ConfirmDialog } from "./ConfirmDialog";
+import { EditProductDialog } from "./EditProfileDialog";
 
 interface ProductTableProps {
   data: Product[];
@@ -35,6 +36,7 @@ function ProductTable({ data }: ProductTableProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [items, setItems] = useState(data);
   const [removeProduct, setRemoveProduct] = useState<Product | null>(null);
+  const [editProduct, setEditProduct] = useState<Product | null>(null);
 
   const columns = [
     columnHelper.accessor("img", {
@@ -135,7 +137,9 @@ function ProductTable({ data }: ProductTableProps) {
         const product = row.original;
         return (
           <Grid>
-            <Button variant="primary">Edit</Button>
+            <Button variant="primary" onClick={() => setEditProduct(product)}>
+              Edit
+            </Button>
             <Button
               variant="secondary"
               onClick={() => setRemoveProduct(product)}
@@ -166,7 +170,7 @@ function ProductTable({ data }: ProductTableProps) {
   return (
     <>
       <div className="flex flex-col gap-y-4">
-        <h1 className="text-5xl font-bold text-neutral-700 text-left">
+        <h1 className="text-left text-5xl font-bold text-neutral-700">
           Product List
         </h1>
 
@@ -189,7 +193,7 @@ function ProductTable({ data }: ProductTableProps) {
                   <Fragment key={header.id}>
                     {flexRender(
                       header.column.columnDef.header,
-                      header.getContext()
+                      header.getContext(),
                     )}
                   </Fragment>
                 ))}
@@ -202,7 +206,7 @@ function ProductTable({ data }: ProductTableProps) {
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="text-center py-12"
+                  className="py-12 text-center"
                 >
                   <p className="text-gray-500 italic">
                     No results found. Try adjusting your filters.
@@ -216,7 +220,7 @@ function ProductTable({ data }: ProductTableProps) {
                     <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}
@@ -244,10 +248,25 @@ function ProductTable({ data }: ProductTableProps) {
           cancelLabel="Cancel"
           onConfirm={() =>
             setItems((prev) =>
-              prev.filter((item) => item.id !== removeProduct.id)
+              prev.filter((item) => item.id !== removeProduct.id),
             )
           }
           onCancel={() => setRemoveProduct(null)}
+        />
+      )}
+
+      {editProduct && (
+        <EditProductDialog
+          product={editProduct}
+          onClose={() => setEditProduct(null)}
+          onSave={(updatedProduct) => {
+            setItems((prev) =>
+              prev.map((item) =>
+                item.id === updatedProduct.id ? updatedProduct : item,
+              ),
+            );
+            setEditProduct(null);
+          }}
         />
       )}
     </>
