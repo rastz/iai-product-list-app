@@ -1,4 +1,5 @@
 import {
+  ColumnFiltersState,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
@@ -20,6 +21,7 @@ import { Button } from "./Button";
 import { Fragment, useState } from "react";
 import { SortableTableHead } from "./SortableTableHead";
 import { Input } from "./Input";
+import { FiltersButton } from "./FiltersButton";
 
 interface ProductTableProps {
   data: Product[];
@@ -73,6 +75,14 @@ const columns = [
       </SortableTableHead>
     ),
     cell: (info) => `$${info.getValue()}`,
+    filterFn: (row, columnId, filterValue: number[]) => {
+      const value = row.getValue<number>(columnId);
+      const [min, max] = filterValue;
+      return (
+        (min === undefined || value >= min) &&
+        (max === undefined || value <= max)
+      );
+    },
   }),
   columnHelper.accessor("stock", {
     id: "stock",
@@ -87,6 +97,14 @@ const columns = [
       </SortableTableHead>
     ),
     cell: (info) => info.getValue(),
+    filterFn: (row, columnId, filterValue: number[]) => {
+      const value = row.getValue<number>(columnId);
+      const [min, max] = filterValue;
+      return (
+        (min === undefined || value >= min) &&
+        (max === undefined || value <= max)
+      );
+    },
   }),
   columnHelper.accessor("id", {
     id: "id",
@@ -118,14 +136,16 @@ const columns = [
 function ProductTable({ data }: ProductTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
     data,
     columns,
-    state: { sorting, globalFilter },
+    state: { sorting, globalFilter, columnFilters },
     globalFilterFn: "includesString",
     onSortingChange: setSorting,
     onGlobalFilterChange: setGlobalFilter,
+    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -136,17 +156,16 @@ function ProductTable({ data }: ProductTableProps) {
       <h1 className="text-5xl font-bold text-neutral-700 text-left">
         Product List
       </h1>
+
       <div className="flex gap-x-1 md:justify-end">
         <Input
           type="text"
-          placeholder="Search..."
+          placeholder="Search"
           value={globalFilter}
           onChange={(event) => setGlobalFilter(event.target.value)}
         />
 
-        <Button variant={"primary"} icon="filters">
-          Filters
-        </Button>
+        <FiltersButton table={table} />
       </div>
 
       <Table>
