@@ -34,7 +34,7 @@ function ProductTable({ data }: ProductTableProps) {
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [items, setItems] = useState(data);
-  const [deleteProduct, setDeleteProduct] = useState<Product | null>(null);
+  const [removeProduct, setRemoveProduct] = useState<Product | null>(null);
 
   const columns = [
     columnHelper.accessor("img", {
@@ -138,9 +138,9 @@ function ProductTable({ data }: ProductTableProps) {
             <Button variant="primary">Edit</Button>
             <Button
               variant="secondary"
-              onClick={() => setDeleteProduct(product)}
+              onClick={() => setRemoveProduct(product)}
             >
-              Delete
+              Remove
             </Button>
           </Grid>
         );
@@ -227,27 +227,27 @@ function ProductTable({ data }: ProductTableProps) {
         </Table>
       </div>
 
-      {deleteProduct && (
+      {removeProduct && (
         <ConfirmDialog
-          open={!!deleteProduct}
+          open={!!removeProduct}
           onOpenChange={(open) => {
-            if (!open) setDeleteProduct(null);
+            if (!open) setRemoveProduct(null);
           }}
           title="Remove product"
           description={
             <>
               Are you sure you want to remove{" "}
-              <strong>{deleteProduct.name}</strong>?
+              <strong>{removeProduct.name}</strong>?
             </>
           }
           confirmLabel="Remove"
           cancelLabel="Cancel"
           onConfirm={() =>
             setItems((prev) =>
-              prev.filter((item) => item.id !== deleteProduct.id)
+              prev.filter((item) => item.id !== removeProduct.id)
             )
           }
-          onCancel={() => setDeleteProduct(null)}
+          onCancel={() => setRemoveProduct(null)}
         />
       )}
     </>
