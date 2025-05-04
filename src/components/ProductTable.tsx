@@ -11,7 +11,6 @@ import {
 import { Product } from "../types";
 import { TableCell } from "./TableCell";
 import { Table } from "./Table";
-import { TableCaption } from "./TableCaption";
 import { TableHeader } from "./TableHeader";
 import { TableRow } from "./TableRow";
 import { TableHead } from "./TableHead";
