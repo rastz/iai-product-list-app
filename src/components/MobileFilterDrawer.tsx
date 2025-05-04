@@ -22,19 +22,19 @@ function MobileFilterDrawer({ table }: MobileFilterDrawerProps) {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/40 z-40" />
-        <Dialog.Content className="fixed z-50 bottom-0 left-0 right-0 rounded-t-xl bg-white p-4 shadow-lg animate-slideUp max-h-1/2 overflow-auto flex flex-col gap-y-4">
-          <div className="flex justify-between items-center mb-4">
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-black/40" />
+        <Dialog.Content className="animate-slideUp fixed right-0 bottom-0 left-0 z-50 flex max-h-1/2 flex-col gap-y-4 overflow-auto rounded-t-xl bg-white p-4 shadow-lg">
+          <div className="mb-4 flex items-center justify-between">
             <div className="flex flex-col gap-y-1">
               <Dialog.Title className="text-lg font-medium">
                 Filters
               </Dialog.Title>
-              <Dialog.Description className="text-sm text-gray-500 mb-4">
+              <Dialog.Description className="mb-4 text-sm text-gray-500">
                 Choose a filter on product list.
               </Dialog.Description>
             </div>
             <Dialog.Close className="text-gray-500 hover:text-gray-800">
-              <span className="w-6 h-6">
+              <span className="h-6 w-6">
                 <CloseIcon />
               </span>
             </Dialog.Close>
