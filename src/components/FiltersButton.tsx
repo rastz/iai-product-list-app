@@ -42,6 +42,8 @@ function FiltersButton({ table }: FiltersButtonProps) {
             onClick={() => {
               priceColumn?.setFilterValue(undefined);
               stockColumn?.setFilterValue(undefined);
+
+              setFiltersOpen(false);
             }}
           >
             Reset Filters
