@@ -12,7 +12,7 @@ html, body {
  * https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter
  */
 html {
-  scrollbar-gutter: stable;
+  scrollbar-gutter: auto;
 }
 
 /*
