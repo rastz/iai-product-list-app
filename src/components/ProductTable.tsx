@@ -151,6 +151,8 @@ function ProductTable({ data }: ProductTableProps) {
     getFilteredRowModel: getFilteredRowModel(),
   });
 
+  const isTableEmpty = table.getRowModel().rows.length === 0;
+
   return (
     <div className="flex flex-col gap-y-4">
       <h1 className="text-5xl font-bold text-neutral-700 text-left">
@@ -185,15 +187,25 @@ function ProductTable({ data }: ProductTableProps) {
         </TableHeader>
 
         <TableBody>
-          {table.getRowModel().rows.map((row) => (
-            <TableRow key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </TableCell>
-              ))}
+          {isTableEmpty ? (
+            <TableRow>
+              <TableCell colSpan={columns.length} className="text-center py-12">
+                <p className="text-gray-500 italic">
+                  No results found. Try adjusting your filters.
+                </p>
+              </TableCell>
             </TableRow>
-          ))}
+          ) : (
+            table.getRowModel().rows.map((row) => (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))
+          )}
         </TableBody>
 
         <TableCaption>End of list</TableCaption>
