@@ -3,7 +3,7 @@ import { Product } from "../types";
 import { Button } from "./Button";
 import { useRef, useState } from "react";
 import { RangeFilter } from "./RangeFilter";
-import { useClickAway } from "react-use";
+import { useClickAway, useKey } from "react-use";
 
 interface FiltersButtonProps {
   table: Table<Product>;
@@ -17,6 +17,7 @@ function FiltersButton({ table }: FiltersButtonProps) {
   const stockColumn = table.getColumn("stock");
 
   useClickAway(ref, () => setFiltersOpen(false));
+  useKey("Escape", () => setFiltersOpen(false), {}, [filtersOpen]);
 
   return (
     <div className="relative inline-block">
