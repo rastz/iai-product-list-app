@@ -25,10 +25,19 @@ function FiltersButton({ table }: FiltersButtonProps) {
       </Button>
 
       {filtersOpen && (
-        <div className="absolute right-0 mt-2 p-4 w-72 z-50 bg-white border rounded shadow-lg">
+        <div className="absolute right-0 mt-2 p-4 w-72 z-50 bg-white border rounded shadow-lg flex flex-col gap-y-4">
           {priceColumn && <RangeFilter column={priceColumn} label="Price" />}
-          <hr className="my-2" />
           {stockColumn && <RangeFilter column={stockColumn} label="Stock" />}
+
+          <Button
+            variant={"primary"}
+            onClick={() => {
+              priceColumn?.setFilterValue(undefined);
+              stockColumn?.setFilterValue(undefined);
+            }}
+          >
+            Reset Filters
+          </Button>
         </div>
       )}
     </div>
