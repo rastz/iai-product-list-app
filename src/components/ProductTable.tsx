@@ -19,10 +19,10 @@ import { Grid } from "./Grid";
 import { Button } from "./Button";
 import { Fragment, useState } from "react";
 import { SortableTableHead } from "./SortableTableHead";
-import { Input } from "./Input";
 import { Filters } from "./Filters";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { EditProductDialog } from "./EditProfileDialog";
+import { Search } from "./Search";
 
 interface ProductTableProps {
   data: Product[];
@@ -175,7 +175,7 @@ function ProductTable({ data }: ProductTableProps) {
         </h1>
 
         <div className="flex gap-x-1 md:justify-end">
-          <Input
+          <Search
             type="text"
             placeholder="Search"
             value={globalFilter}
