@@ -1,9 +1,9 @@
 import { Box } from "./components/Box";
 import { Main } from "./components/Main";
 import { Section } from "./components/Section";
+import { ProductTable } from "./components/ProductTable";
 
 import data from "./data/products.json";
-import { ProductTable } from "./components/ProductTable";
 
 function App() {
   return (
