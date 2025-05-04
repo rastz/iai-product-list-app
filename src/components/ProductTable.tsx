@@ -44,7 +44,7 @@ const columns = [
   }),
   columnHelper.accessor("price", {
     header: "Price",
-    cell: (info) => info.getValue(),
+    cell: (info) => `$${info.getValue()}`,
   }),
   columnHelper.accessor("stock", {
     header: "Stock",
