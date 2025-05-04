@@ -21,7 +21,7 @@ import { Fragment, useState } from "react";
 import { SortableTableHead } from "./SortableTableHead";
 import { Filters } from "./Filters";
 import { ConfirmDialog } from "./ConfirmDialog";
-import { EditProductDialog } from "./EditProfileDialog";
+import { EditProductDialog } from "./EditProductDialog";
 import { Search } from "./Search";
 
 interface ProductTableProps {
