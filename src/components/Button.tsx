@@ -1,21 +1,34 @@
-import { ComponentProps } from "react";
+import { ComponentProps, ReactNode } from "react";
+import { FilterIcon } from "./Icons/FilterIcon";
 
 type Variant = "primary" | "secondary";
+type Icon = "filters";
 
 interface ButtonProps extends ComponentProps<"button"> {
   variant: Variant;
+  icon?: Icon;
 }
 
-const VARIANTS: Record<Variant, string> = {
-  primary:
-    "bg-gray-900 rounded-sm px-4 py-2 text-white cursor-pointer hover:bg-gray-800 select-none",
-  secondary:
-    "bg-gray-50 rounded-sm px-4 py-2 text-gray-900 cursor-pointer hover:bg-gray-100 border border-gray-200 select-none",
+const ICONS: Record<Icon, ReactNode> = {
+  filters: <FilterIcon />,
 };
 
-function Button({ children, variant, ...restProps }: ButtonProps) {
+const VARIANTS: Record<Variant, string> = {
+  primary: "bg-gray-900 text-white hover:bg-gray-800",
+  secondary:
+    "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200",
+};
+
+const DEFAULT_CLASSES =
+  "rounded-sm px-4 py-2 cursor-pointer select-none grid auto-cols-max gap-2 place-content-center grid-flow-col";
+
+function Button({ children, variant, icon, ...restProps }: ButtonProps) {
   return (
-    <button className={VARIANTS[variant]} {...restProps}>
+    <button
+      className={`${DEFAULT_CLASSES} ${VARIANTS[variant]}`}
+      {...restProps}
+    >
+      {icon && <span className="w-6 h-6">{ICONS[icon]}</span>}
       {children}
     </button>
   );
