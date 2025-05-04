@@ -1,9 +1,8 @@
+import { SortDirection } from "@tanstack/react-table";
 import { ComponentProps } from "react";
-import { SortDirection } from "../hooks/useSort";
 
 interface SortableTableHeadProps extends ComponentProps<"th"> {
-  isActive: boolean;
-  sortDirection: SortDirection;
+  sortDirection: SortDirection | false;
 }
 
 const UP_ARROW = "↑";
@@ -12,19 +11,26 @@ const DEFAULT_ARROW = "↑↓";
 
 function SortableTableHead({
   children,
-  isActive,
   sortDirection,
   ...restProps
 }: SortableTableHeadProps) {
-  const arrow = isActive
-    ? sortDirection === "asc"
-      ? UP_ARROW
-      : DOWN_ARROW
-    : DEFAULT_ARROW;
+  let arrow;
+
+  if (sortDirection === "desc") {
+    arrow = DOWN_ARROW;
+  }
+
+  if (sortDirection === "asc") {
+    arrow = UP_ARROW;
+  }
+
+  if (sortDirection === false) {
+    arrow = DEFAULT_ARROW;
+  }
 
   return (
     <th
-      className="p-10 text-center align-middle font-medium whitespace-nowrap"
+      className="p-10 text-center align-middle font-medium whitespace-nowrap cursor-pointer select-none"
       {...restProps}
     >
       <div className="hover:cursor-pointer w-full h-full flex justify-center items-center">
