@@ -23,6 +23,7 @@ import { Filters } from "./Filters";
 import { RemoveProductDialog } from "./RemoveProductDialog";
 import { EditProductDialog } from "./EditProductDialog";
 import { Search } from "./Search";
+import { Checkbox } from "./Checkbox";
 
 interface ProductTableProps {
   data: Product[];
@@ -36,7 +37,9 @@ function ProductTable({ data }: ProductTableProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [products, setProducts] = useState(data);
   const [removeProduct, setRemoveProduct] = useState<Product | null>(null);
+  const [removeMany, setRemoveMany] = useState<Product[]>([]);
   const [editProduct, setEditProduct] = useState<Product | null>(null);
+  const [rowSelection, setRowSelection] = useState({});
 
   const columns = [
     columnHelper.accessor("img", {
@@ -150,22 +153,38 @@ function ProductTable({ data }: ProductTableProps) {
         );
       },
     }),
+    columnHelper.display({
+      id: "select",
+      header: () => <TableHead>Select</TableHead>,
+      cell: ({ row }) => (
+        <Checkbox
+          checked={row.getIsSelected()}
+          disabled={!row.getCanSelect()}
+          onChange={row.getToggleSelectedHandler()}
+        />
+      ),
+    }),
   ];
 
   const table = useReactTable({
     data: products,
     columns,
-    state: { sorting, globalFilter, columnFilters },
+    state: { sorting, globalFilter, columnFilters, rowSelection },
     globalFilterFn: "includesString",
+    enableRowSelection: true,
     onSortingChange: setSorting,
     onGlobalFilterChange: setGlobalFilter,
     onColumnFiltersChange: setColumnFilters,
+    onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
   });
 
   const isTableEmpty = table.getRowModel().rows.length === 0;
+  const selectedProducts = table
+    .getSelectedRowModel()
+    .rows.map((row) => row.original);
 
   return (
     <>
@@ -174,15 +193,28 @@ function ProductTable({ data }: ProductTableProps) {
           Product List
         </h1>
 
-        <div className="flex gap-x-1 md:justify-end">
-          <Search
-            type="text"
-            placeholder="Search"
-            value={globalFilter}
-            onChange={(event) => setGlobalFilter(event.target.value)}
-          />
+        <div className="flex md:justify-end">
+          <div className="grid w-full grid-cols-1 gap-2 md:w-2/3 md:grid-cols-3">
+            <Search
+              type="text"
+              placeholder="Search"
+              value={globalFilter}
+              onChange={(event) => setGlobalFilter(event.target.value)}
+            />
 
-          <Filters table={table} />
+            <Filters table={table} />
+
+            {selectedProducts.length > 0 ? (
+              <Button
+                variant="danger"
+                onClick={() => setRemoveMany(selectedProducts)}
+              >
+                Remove selected ({selectedProducts.length})
+              </Button>
+            ) : (
+              <Button variant="disabled">Remove selected (0)</Button>
+            )}
+          </div>
         </div>
 
         <Table>
@@ -244,6 +276,24 @@ function ProductTable({ data }: ProductTableProps) {
             )
           }
           onCancel={() => setRemoveProduct(null)}
+        />
+      )}
+
+      {removeMany.length > 0 && (
+        <RemoveProductDialog
+          open={removeMany.length > 0}
+          productName={`${removeMany.length} selected product(s)`}
+          onOpenChange={(open) => {
+            if (!open) setRemoveMany([]);
+          }}
+          onConfirm={() => {
+            setProducts((prev) =>
+              prev.filter((item) => !removeMany.some((p) => p.id === item.id)),
+            );
+            setRemoveMany([]);
+            table.resetRowSelection();
+          }}
+          onCancel={() => setRemoveMany([])}
         />
       )}
 
