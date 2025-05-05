@@ -20,7 +20,7 @@ function FiltersButton({ table }: FiltersButtonProps) {
   useKey("Escape", () => setFiltersOpen(false), {}, [filtersOpen]);
 
   return (
-    <div className="relative inline-block">
+    <div className="relative">
       <Button
         variant="primary"
         icon="filters"
@@ -32,7 +32,7 @@ function FiltersButton({ table }: FiltersButtonProps) {
       {filtersOpen && (
         <div
           ref={ref}
-          className="absolute right-0 mt-2 p-4 w-72 z-50 bg-white border rounded shadow-lg flex flex-col gap-y-4"
+          className="absolute right-0 z-50 mt-2 flex w-72 flex-col gap-y-4 rounded border bg-white p-4 shadow-lg"
         >
           {priceColumn && <RangeFilter column={priceColumn} label="Price" />}
           {stockColumn && <RangeFilter column={stockColumn} label="Stock" />}
