@@ -34,11 +34,16 @@ function RemoveDialog({
     onOpenChange(false);
   };
 
+  const preventDefaultOnLoading = (event: Event) =>
+    isLoading && event.preventDefault();
+
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 bg-black/40" />
         <Dialog.Content
+          onPointerDownOutside={preventDefaultOnLoading}
+          onEscapeKeyDown={preventDefaultOnLoading}
           className={clsx(BASE_DIALOG_CLASSES, {
             "animate-slideUp": md,
             "md:animate-none": !md,
