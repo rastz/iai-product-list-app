@@ -60,7 +60,7 @@ function RemoveDialog({
 
           <div className="mt-4 grid grid-cols-2 gap-2">
             <Button
-              variant={"secondary"}
+              variant={isLoading ? "disabled" : "secondary"}
               disabled={isLoading}
               onClick={onCancel}
             >
