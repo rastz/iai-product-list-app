@@ -20,7 +20,7 @@ import { Button } from "./Button";
 import { Fragment, useState } from "react";
 import { SortableTableHead } from "./SortableTableHead";
 import { Filters } from "./Filters";
-import { RemoveDialog } from "./RemoveDialog";
+import { RemoveProductDialog } from "./RemoveProductDialog";
 import { EditProductDialog } from "./EditProductDialog";
 import { Search } from "./Search";
 
@@ -232,7 +232,7 @@ function ProductTable({ data }: ProductTableProps) {
       </div>
 
       {removeProduct && (
-        <RemoveDialog
+        <RemoveProductDialog
           open={!!removeProduct}
           productName={removeProduct.name}
           onOpenChange={(open) => {

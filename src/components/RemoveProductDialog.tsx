@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useMedia } from "react-use";
 import { useWait } from "../hooks/useWait";
 
-interface RemoveDialogProps {
+interface RemoveProductDialogProps {
   open: boolean;
   productName: string;
   onOpenChange: (open: boolean) => void;
@@ -15,13 +15,13 @@ interface RemoveDialogProps {
 const BASE_DIALOG_CLASSES =
   "fixed right-0 bottom-0 left-0 z-50 flex max-h-1/2 flex-col gap-y-4 overflow-auto rounded-t-xl bg-white p-4 shadow-lg md:top-1/2 md:right-auto md:bottom-auto md:left-1/2 md:max-w-sm md:-translate-x-1/2 md:-translate-y-1/2 md:animate-none md:rounded-lg md:p-6";
 
-function RemoveDialog({
+function RemoveProductDialog({
   open,
   productName,
   onOpenChange,
   onConfirm,
   onCancel,
-}: RemoveDialogProps) {
+}: RemoveProductDialogProps) {
   /**
    * This 'max-width' match with Tailwind 'md' breakpoint
    */
@@ -80,4 +80,4 @@ function RemoveDialog({
   );
 }
 
-export { RemoveDialog };
+export { RemoveProductDialog };
