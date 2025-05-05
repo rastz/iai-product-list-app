@@ -20,7 +20,7 @@ import { Button } from "./Button";
 import { Fragment, useState } from "react";
 import { SortableTableHead } from "./SortableTableHead";
 import { Filters } from "./Filters";
-import { ConfirmDialog } from "./ConfirmDialog";
+import { RemoveDialog } from "./RemoveDialog";
 import { EditProductDialog } from "./EditProductDialog";
 import { Search } from "./Search";
 
@@ -232,20 +232,12 @@ function ProductTable({ data }: ProductTableProps) {
       </div>
 
       {removeProduct && (
-        <ConfirmDialog
+        <RemoveDialog
           open={!!removeProduct}
+          productName={removeProduct.name}
           onOpenChange={(open) => {
             if (!open) setRemoveProduct(null);
           }}
-          title="Remove product"
-          description={
-            <>
-              Are you sure you want to remove{" "}
-              <strong>{removeProduct.name}</strong>?
-            </>
-          }
-          confirmLabel="Remove"
-          cancelLabel="Cancel"
           onConfirm={() =>
             setProducts((prev) =>
               prev.filter((item) => item.id !== removeProduct.id),

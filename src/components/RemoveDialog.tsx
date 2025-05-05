@@ -1,16 +1,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "./Button";
-import { ReactNode } from "react";
 import clsx from "clsx";
 import { useMedia } from "react-use";
 
-interface ConfirmDialogProps {
+interface RemoveDialogProps {
   open: boolean;
+  productName: string;
   onOpenChange: (open: boolean) => void;
-  title: string;
-  description?: ReactNode;
-  confirmLabel: string;
-  cancelLabel: string;
   onConfirm: VoidFunction;
   onCancel: VoidFunction;
 }
@@ -18,16 +14,13 @@ interface ConfirmDialogProps {
 const BASE_DIALOG_CLASSES =
   "fixed right-0 bottom-0 left-0 z-50 flex max-h-1/2 flex-col gap-y-4 overflow-auto rounded-t-xl bg-white p-4 shadow-lg md:top-1/2 md:right-auto md:bottom-auto md:left-1/2 md:max-w-sm md:-translate-x-1/2 md:-translate-y-1/2 md:animate-none md:rounded-lg md:p-6";
 
-export function ConfirmDialog({
+function RemoveDialog({
   open,
+  productName,
   onOpenChange,
-  title,
-  description,
-  confirmLabel,
-  cancelLabel,
   onConfirm,
   onCancel,
-}: ConfirmDialogProps) {
+}: RemoveDialogProps) {
   /**
    * This 'max-width' match with Tailwind 'md' breakpoint
    */
@@ -43,22 +36,24 @@ export function ConfirmDialog({
             "md:animate-none": !md,
           })}
         >
-          <Dialog.Title className="text-lg font-medium">{title}</Dialog.Title>
-          {description && (
+          <Dialog.Title className="text-lg font-medium">
+            Remove product
+          </Dialog.Title>
+          {productName && (
             <Dialog.Description className="text-sm text-gray-600">
-              {description}
+              Are you sure you want to remove <strong>{productName}</strong>?
             </Dialog.Description>
           )}
 
           <div className="mt-4 flex justify-end gap-2">
             <Dialog.Close asChild>
               <Button variant="secondary" onClick={onCancel}>
-                {cancelLabel}
+                Cancel
               </Button>
             </Dialog.Close>
             <Dialog.Close asChild>
               <Button variant="danger" onClick={onConfirm}>
-                {confirmLabel}
+                Remove
               </Button>
             </Dialog.Close>
           </div>
@@ -67,3 +62,5 @@ export function ConfirmDialog({
     </Dialog.Root>
   );
 }
+
+export { RemoveDialog };
