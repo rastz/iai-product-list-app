@@ -134,7 +134,7 @@ export function EditProductDialog({
               />
             </label>
 
-            <div className="flex justify-end gap-2 pt-4">
+            <div className="grid grid-cols-2 gap-2 pt-4">
               <Dialog.Close asChild>
                 <Button variant="secondary" onClick={onClose}>
                   Cancel

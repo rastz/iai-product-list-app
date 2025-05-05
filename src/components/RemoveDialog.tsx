@@ -53,7 +53,7 @@ function RemoveDialog({
             </Dialog.Description>
           )}
 
-          <div className="mt-4 flex justify-end gap-2">
+          <div className="mt-4 grid grid-cols-2 gap-2">
             <Button
               variant={"secondary"}
               disabled={isLoading}
