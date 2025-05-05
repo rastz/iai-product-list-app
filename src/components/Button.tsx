@@ -2,7 +2,7 @@ import { ComponentProps, ReactNode } from "react";
 import { FilterIcon } from "./Icons/FilterIcon";
 import { SpinnerIcon } from "./Icons/SpinnerIcon";
 
-type Variant = "primary" | "secondary" | "danger" | "loading";
+type Variant = "primary" | "secondary" | "danger" | "loading" | "disabled";
 type Icon = "filters";
 
 interface ButtonProps extends ComponentProps<"button"> {
@@ -15,15 +15,17 @@ const ICONS: Record<Icon, ReactNode> = {
 };
 
 const VARIANTS: Record<Variant, string> = {
-  primary: "bg-gray-900 text-white hover:bg-gray-800",
+  primary: "bg-gray-900 text-white hover:bg-gray-800 cursor-pointer",
   secondary:
-    "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200",
-  danger: "bg-red-700 text-white hover:bg-red-800",
-  loading: "text-black bg-gray-200",
+    "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200 cursor-pointer",
+  danger: "bg-red-700 text-white hover:bg-red-800 cursor-pointer",
+  loading: "bg-gray-200 cursor-not-allowed",
+  disabled:
+    "text-gray-900 border border-gray-200 bg-gray-200 cursor-not-allowed",
 };
 
 const DEFAULT_CLASSES =
-  "rounded-sm px-4 py-2 cursor-pointer select-none grid auto-cols-max gap-2 place-content-center grid-flow-col";
+  "rounded-sm px-4 py-2 select-none grid auto-cols-max gap-2 place-content-center grid-flow-col";
 
 function Button({ children, variant, icon, ...restProps }: ButtonProps) {
   const isLoading = variant === "loading";
@@ -43,7 +45,6 @@ function Button({ children, variant, icon, ...restProps }: ButtonProps) {
 
   return (
     <button
-      disabled={isLoading}
       className={`${DEFAULT_CLASSES} ${VARIANTS[variant]}`}
       {...restProps}
     >
