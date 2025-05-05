@@ -2,6 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "./Button";
 import clsx from "clsx";
 import { useMedia } from "react-use";
+import { useWait } from "../hooks/useWait";
 
 interface RemoveDialogProps {
   open: boolean;
@@ -25,6 +26,13 @@ function RemoveDialog({
    * This 'max-width' match with Tailwind 'md' breakpoint
    */
   const md = useMedia(`(max-width: 768px`);
+  const { wait, isLoading } = useWait(2000);
+
+  const handleRemove = async () => {
+    await wait();
+    onConfirm();
+    onOpenChange(false);
+  };
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -46,16 +54,20 @@ function RemoveDialog({
           )}
 
           <div className="mt-4 flex justify-end gap-2">
-            <Dialog.Close asChild>
-              <Button variant="secondary" onClick={onCancel}>
-                Cancel
-              </Button>
-            </Dialog.Close>
-            <Dialog.Close asChild>
-              <Button variant="danger" onClick={onConfirm}>
-                Remove
-              </Button>
-            </Dialog.Close>
+            <Button
+              variant={"secondary"}
+              disabled={isLoading}
+              onClick={onCancel}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant={isLoading ? "loading" : "danger"}
+              disabled={isLoading}
+              onClick={handleRemove}
+            >
+              Remove
+            </Button>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
