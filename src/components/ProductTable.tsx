@@ -197,7 +197,7 @@ function ProductTable({ data }: ProductTableProps) {
           <div className="grid w-full grid-cols-1 gap-2 md:w-2/3 md:grid-cols-3">
             <Search
               type="text"
-              placeholder="Search"
+              placeholder="Find Product"
               value={globalFilter}
               onChange={(event) => setGlobalFilter(event.target.value)}
             />
