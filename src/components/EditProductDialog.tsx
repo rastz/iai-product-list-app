@@ -113,6 +113,8 @@ export function EditProductDialog({
             <label className="flex flex-col gap-y-1 text-sm font-medium">
               Price
               <Input
+                min={0}
+                step={0.01}
                 type="number"
                 errorMessage={errors.price}
                 value={formState.price}
@@ -123,6 +125,8 @@ export function EditProductDialog({
             <label className="flex flex-col gap-y-1 text-sm font-medium">
               Stock
               <Input
+                min={0}
+                step={1}
                 type="number"
                 errorMessage={errors.stock}
                 value={formState.stock}
