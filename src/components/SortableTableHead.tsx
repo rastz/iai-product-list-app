@@ -1,5 +1,6 @@
 import { SortDirection } from "@tanstack/react-table";
 import { ComponentProps } from "react";
+import { CELL_SIZE } from "../const";
 
 interface SortableTableHeadProps extends ComponentProps<"th"> {
   sortDirection: SortDirection | false;
@@ -30,7 +31,7 @@ function SortableTableHead({
 
   return (
     <th
-      className="w-80 cursor-pointer p-10 text-center align-middle font-medium whitespace-nowrap select-none"
+      className={`${CELL_SIZE} cursor-pointer text-center align-middle font-medium whitespace-nowrap select-none`}
       {...restProps}
     >
       <div className="flex h-full w-full items-center justify-center hover:cursor-pointer">
