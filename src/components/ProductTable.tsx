@@ -188,79 +188,82 @@ function ProductTable({ data }: ProductTableProps) {
 
   return (
     <>
-      <div className="flex flex-col gap-y-4">
-        <h1 className="text-left text-5xl font-bold text-neutral-700">
-          Product List
-        </h1>
+      <div className="overflow-x-auto">
+        <div className="flex w-max flex-col gap-y-8 md:w-full">
+          <h1 className="text-left text-5xl font-bold text-neutral-700">
+            Product List
+          </h1>
 
-        <div className="flex md:justify-end">
-          <div className="grid w-full grid-cols-1 gap-2 md:w-2/3 md:grid-cols-3">
-            <Search
-              type="text"
-              placeholder="Find Product"
-              value={globalFilter}
-              onChange={(event) => setGlobalFilter(event.target.value)}
-            />
+          <div className="flex w-full items-start justify-between gap-2">
+            <div className="flex flex-col gap-2 md:w-2/4 md:flex-row md:gap-2">
+              <Search
+                type="text"
+                placeholder="Find Product"
+                value={globalFilter}
+                onChange={(event) => setGlobalFilter(event.target.value)}
+              />
+              <Filters table={table} />
+            </div>
 
-            <Filters table={table} />
-
-            {selectedProducts.length > 0 ? (
-              <Button
-                variant="danger"
-                onClick={() => setRemoveMany(selectedProducts)}
-              >
-                Remove selected ({selectedProducts.length})
-              </Button>
-            ) : (
-              <Button variant="disabled">Remove selected (0)</Button>
-            )}
-          </div>
-        </div>
-
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <Fragment key={header.id}>
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
-                  </Fragment>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-
-          <TableBody>
-            {isTableEmpty ? (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="py-12 text-center"
+            <div className="flex min-w-60 justify-end md:min-w-80">
+              {selectedProducts.length > 0 ? (
+                <Button
+                  variant="danger"
+                  onClick={() => setRemoveMany(selectedProducts)}
                 >
-                  <p className="text-gray-500 italic">
-                    No results found. Try adjusting your filters.
-                  </p>
-                </TableCell>
-              </TableRow>
-            ) : (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                  Remove selected ({selectedProducts.length})
+                </Button>
+              ) : (
+                <Button variant="disabled">Remove selected (0)</Button>
+              )}
+            </div>
+          </div>
+
+          <Table>
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <Fragment key={header.id}>
                       {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
+                        header.column.columnDef.header,
+                        header.getContext(),
                       )}
-                    </TableCell>
+                    </Fragment>
                   ))}
                 </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableHeader>
+
+            <TableBody>
+              {isTableEmpty ? (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="py-12 text-center"
+                  >
+                    <p className="text-gray-500 italic">
+                      No results found. Try adjusting your filters.
+                    </p>
+                  </TableCell>
+                </TableRow>
+              ) : (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow key={row.id}>
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
       {removeProduct && (
