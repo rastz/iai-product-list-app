@@ -5,6 +5,7 @@ import {
   getCoreRowModel,
   getFilteredRowModel,
   getSortedRowModel,
+  getPaginationRowModel,
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
@@ -40,6 +41,7 @@ function ProductTable({ data }: ProductTableProps) {
   const [removeMany, setRemoveMany] = useState<Product[]>([]);
   const [editProduct, setEditProduct] = useState<Product | null>(null);
   const [rowSelection, setRowSelection] = useState({});
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
 
   const columns = [
     columnHelper.accessor("img", {
@@ -169,19 +171,21 @@ function ProductTable({ data }: ProductTableProps) {
   const table = useReactTable({
     data: products,
     columns,
-    state: { sorting, globalFilter, columnFilters, rowSelection },
+    state: { sorting, globalFilter, columnFilters, rowSelection, pagination },
     globalFilterFn: "includesString",
     enableRowSelection: true,
     onSortingChange: setSorting,
     onGlobalFilterChange: setGlobalFilter,
     onColumnFiltersChange: setColumnFilters,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
-  const isTableEmpty = table.getRowModel().rows.length === 0;
+  const isTableEmpty = table.getPaginationRowModel().rows.length === 0;
   const selectedProducts = table
     .getSelectedRowModel()
     .rows.map((row) => row.original);
@@ -248,7 +252,7 @@ function ProductTable({ data }: ProductTableProps) {
                   </TableCell>
                 </TableRow>
               ) : (
-                table.getRowModel().rows.map((row) => (
+                table.getPaginationRowModel().rows.map((row) => (
                   <TableRow key={row.id}>
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
@@ -263,6 +267,34 @@ function ProductTable({ data }: ProductTableProps) {
               )}
             </TableBody>
           </Table>
+
+          {!isTableEmpty && (
+            <div className="flex w-full items-center gap-4 md:justify-end">
+              <p>
+                Page {table.getState().pagination.pageIndex + 1} of{" "}
+                {table.getPageCount()}
+              </p>
+              <div className="w-1/12">
+                <Button
+                  variant="primary"
+                  onClick={() => table.previousPage()}
+                  disabled={!table.getCanPreviousPage()}
+                >
+                  Previous
+                </Button>
+              </div>
+
+              <div className="w-1/12">
+                <Button
+                  variant="primary"
+                  onClick={() => table.nextPage()}
+                  disabled={!table.getCanNextPage()}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
