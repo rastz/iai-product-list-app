@@ -26,7 +26,7 @@ function RemoveProductDialog({
    * This 'max-width' match with Tailwind 'md' breakpoint
    */
   const md = useMedia(`(max-width: 768px`);
-  const { wait, isLoading } = useWait(2000);
+  const { wait, isLoading } = useWait(1000);
 
   const handleRemove = async () => {
     await wait();
