@@ -55,8 +55,8 @@ function ProductTable({ data }: ProductTableProps) {
           <img
             src={url}
             alt={alt}
-            width="50"
-            height="50"
+            width="80"
+            height="80"
             className="rounded-sm select-none"
           />
         );
