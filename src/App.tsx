@@ -3,7 +3,7 @@ import { Main } from "./components/Main";
 import { Section } from "./components/Section";
 import { ProductTable } from "./components/ProductTable";
 
-import data from "./data/products.json";
+import data from "./data/products-100.json";
 import { useFixRadixScrollLock } from "./hooks/useFixRadixScrollLock";
 
 function App() {
