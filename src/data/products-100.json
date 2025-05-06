@@ -1,0 +1,1004 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Smart Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/1/600",
+        "alt": ""
+      },
+      "price": 321.52,
+      "stock": 6
+    },
+    {
+      "id": 2,
+      "name": "Smart Charger",
+      "img": {
+        "url": "https://picsum.photos/id/2/600",
+        "alt": ""
+      },
+      "price": 372.07,
+      "stock": 62
+    },
+    {
+      "id": 3,
+      "name": "Smart Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/3/600",
+        "alt": ""
+      },
+      "price": 115.49,
+      "stock": 188
+    },
+    {
+      "id": 4,
+      "name": "Smart Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/4/600",
+        "alt": ""
+      },
+      "price": 55.74,
+      "stock": 189
+    },
+    {
+      "id": 5,
+      "name": "Smart Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/5/600",
+        "alt": ""
+      },
+      "price": 446.63,
+      "stock": 22
+    },
+    {
+      "id": 6,
+      "name": "Smart SSD",
+      "img": {
+        "url": "https://picsum.photos/id/6/600",
+        "alt": ""
+      },
+      "price": 297.29,
+      "stock": 8
+    },
+    {
+      "id": 7,
+      "name": "Smart Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/7/600",
+        "alt": ""
+      },
+      "price": 19.75,
+      "stock": 55
+    },
+    {
+      "id": 8,
+      "name": "Smart Camera",
+      "img": {
+        "url": "https://picsum.photos/id/8/600",
+        "alt": ""
+      },
+      "price": 120.17,
+      "stock": 154
+    },
+    {
+      "id": 9,
+      "name": "Smart Router",
+      "img": {
+        "url": "https://picsum.photos/id/9/600",
+        "alt": ""
+      },
+      "price": 18.14,
+      "stock": 50
+    },
+    {
+      "id": 10,
+      "name": "Smart Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/10/600",
+        "alt": ""
+      },
+      "price": 359.43,
+      "stock": 179
+    },
+    {
+      "id": 11,
+      "name": "Wireless Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/11/600",
+        "alt": ""
+      },
+      "price": 274.75,
+      "stock": 56
+    },
+    {
+      "id": 12,
+      "name": "Wireless Charger",
+      "img": {
+        "url": "https://picsum.photos/id/12/600",
+        "alt": ""
+      },
+      "price": 227.36,
+      "stock": 71
+    },
+    {
+      "id": 13,
+      "name": "Wireless Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/13/600",
+        "alt": ""
+      },
+      "price": 405.67,
+      "stock": 1
+    },
+    {
+      "id": 14,
+      "name": "Wireless Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/14/600",
+        "alt": ""
+      },
+      "price": 380.61,
+      "stock": 40
+    },
+    {
+      "id": 15,
+      "name": "Wireless Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/15/600",
+        "alt": ""
+      },
+      "price": 350.58,
+      "stock": 87
+    },
+    {
+      "id": 16,
+      "name": "Wireless SSD",
+      "img": {
+        "url": "https://picsum.photos/id/16/600",
+        "alt": ""
+      },
+      "price": 142.55,
+      "stock": 55
+    },
+    {
+      "id": 17,
+      "name": "Wireless Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/17/600",
+        "alt": ""
+      },
+      "price": 478.82,
+      "stock": 86
+    },
+    {
+      "id": 18,
+      "name": "Wireless Camera",
+      "img": {
+        "url": "https://picsum.photos/id/18/600",
+        "alt": ""
+      },
+      "price": 55.59,
+      "stock": 97
+    },
+    {
+      "id": 19,
+      "name": "Wireless Router",
+      "img": {
+        "url": "https://picsum.photos/id/19/600",
+        "alt": ""
+      },
+      "price": 52.87,
+      "stock": 88
+    },
+    {
+      "id": 20,
+      "name": "Wireless Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/20/600",
+        "alt": ""
+      },
+      "price": 303.84,
+      "stock": 11
+    },
+    {
+      "id": 21,
+      "name": "Portable Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/21/600",
+        "alt": ""
+      },
+      "price": 366.22,
+      "stock": 137
+    },
+    {
+      "id": 22,
+      "name": "Portable Charger",
+      "img": {
+        "url": "https://picsum.photos/id/22/600",
+        "alt": ""
+      },
+      "price": 66.79,
+      "stock": 96
+    },
+    {
+      "id": 23,
+      "name": "Portable Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/23/600",
+        "alt": ""
+      },
+      "price": 44.01,
+      "stock": 75
+    },
+    {
+      "id": 24,
+      "name": "Portable Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/24/600",
+        "alt": ""
+      },
+      "price": 415.56,
+      "stock": 158
+    },
+    {
+      "id": 25,
+      "name": "Portable Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/25/600",
+        "alt": ""
+      },
+      "price": 443.3,
+      "stock": 92
+    },
+    {
+      "id": 26,
+      "name": "Portable SSD",
+      "img": {
+        "url": "https://picsum.photos/id/26/600",
+        "alt": ""
+      },
+      "price": 290.79,
+      "stock": 180
+    },
+    {
+      "id": 27,
+      "name": "Portable Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/27/600",
+        "alt": ""
+      },
+      "price": 39.43,
+      "stock": 169
+    },
+    {
+      "id": 28,
+      "name": "Portable Camera",
+      "img": {
+        "url": "https://picsum.photos/id/28/600",
+        "alt": ""
+      },
+      "price": 117.81,
+      "stock": 74
+    },
+    {
+      "id": 29,
+      "name": "Portable Router",
+      "img": {
+        "url": "https://picsum.photos/id/29/600",
+        "alt": ""
+      },
+      "price": 492.68,
+      "stock": 59
+    },
+    {
+      "id": 30,
+      "name": "Portable Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/30/600",
+        "alt": ""
+      },
+      "price": 433.91,
+      "stock": 97
+    },
+    {
+      "id": 31,
+      "name": "Rechargeable Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/31/600",
+        "alt": ""
+      },
+      "price": 142.6,
+      "stock": 162
+    },
+    {
+      "id": 32,
+      "name": "Rechargeable Charger",
+      "img": {
+        "url": "https://picsum.photos/id/32/600",
+        "alt": ""
+      },
+      "price": 417.88,
+      "stock": 41
+    },
+    {
+      "id": 33,
+      "name": "Rechargeable Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/33/600",
+        "alt": ""
+      },
+      "price": 188.24,
+      "stock": 53
+    },
+    {
+      "id": 34,
+      "name": "Rechargeable Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/34/600",
+        "alt": ""
+      },
+      "price": 336.74,
+      "stock": 179
+    },
+    {
+      "id": 35,
+      "name": "Rechargeable Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/35/600",
+        "alt": ""
+      },
+      "price": 468.64,
+      "stock": 165
+    },
+    {
+      "id": 36,
+      "name": "Rechargeable SSD",
+      "img": {
+        "url": "https://picsum.photos/id/36/600",
+        "alt": ""
+      },
+      "price": 40.34,
+      "stock": 162
+    },
+    {
+      "id": 37,
+      "name": "Rechargeable Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/37/600",
+        "alt": ""
+      },
+      "price": 89.71,
+      "stock": 186
+    },
+    {
+      "id": 38,
+      "name": "Rechargeable Camera",
+      "img": {
+        "url": "https://picsum.photos/id/38/600",
+        "alt": ""
+      },
+      "price": 126.18,
+      "stock": 118
+    },
+    {
+      "id": 39,
+      "name": "Rechargeable Router",
+      "img": {
+        "url": "https://picsum.photos/id/39/600",
+        "alt": ""
+      },
+      "price": 192.83,
+      "stock": 163
+    },
+    {
+      "id": 40,
+      "name": "Rechargeable Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/40/600",
+        "alt": ""
+      },
+      "price": 345.64,
+      "stock": 56
+    },
+    {
+      "id": 41,
+      "name": "Bluetooth Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/41/600",
+        "alt": ""
+      },
+      "price": 343.88,
+      "stock": 196
+    },
+    {
+      "id": 42,
+      "name": "Bluetooth Charger",
+      "img": {
+        "url": "https://picsum.photos/id/42/600",
+        "alt": ""
+      },
+      "price": 389.12,
+      "stock": 58
+    },
+    {
+      "id": 43,
+      "name": "Bluetooth Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/43/600",
+        "alt": ""
+      },
+      "price": 411.79,
+      "stock": 80
+    },
+    {
+      "id": 44,
+      "name": "Bluetooth Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/44/600",
+        "alt": ""
+      },
+      "price": 203.58,
+      "stock": 16
+    },
+    {
+      "id": 45,
+      "name": "Bluetooth Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/45/600",
+        "alt": ""
+      },
+      "price": 109.44,
+      "stock": 145
+    },
+    {
+      "id": 46,
+      "name": "Bluetooth SSD",
+      "img": {
+        "url": "https://picsum.photos/id/46/600",
+        "alt": ""
+      },
+      "price": 438.8,
+      "stock": 80
+    },
+    {
+      "id": 47,
+      "name": "Bluetooth Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/47/600",
+        "alt": ""
+      },
+      "price": 110.25,
+      "stock": 127
+    },
+    {
+      "id": 48,
+      "name": "Bluetooth Camera",
+      "img": {
+        "url": "https://picsum.photos/id/48/600",
+        "alt": ""
+      },
+      "price": 200.84,
+      "stock": 164
+    },
+    {
+      "id": 49,
+      "name": "Bluetooth Router",
+      "img": {
+        "url": "https://picsum.photos/id/49/600",
+        "alt": ""
+      },
+      "price": 232.13,
+      "stock": 67
+    },
+    {
+      "id": 50,
+      "name": "Bluetooth Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/50/600",
+        "alt": ""
+      },
+      "price": 74.12,
+      "stock": 190
+    },
+    {
+      "id": 51,
+      "name": "Gaming Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/51/600",
+        "alt": ""
+      },
+      "price": 282.88,
+      "stock": 67
+    },
+    {
+      "id": 52,
+      "name": "Gaming Charger",
+      "img": {
+        "url": "https://picsum.photos/id/52/600",
+        "alt": ""
+      },
+      "price": 374.77,
+      "stock": 109
+    },
+    {
+      "id": 53,
+      "name": "Gaming Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/53/600",
+        "alt": ""
+      },
+      "price": 449.42,
+      "stock": 102
+    },
+    {
+      "id": 54,
+      "name": "Gaming Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/54/600",
+        "alt": ""
+      },
+      "price": 184.19,
+      "stock": 35
+    },
+    {
+      "id": 55,
+      "name": "Gaming Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/55/600",
+        "alt": ""
+      },
+      "price": 257.22,
+      "stock": 23
+    },
+    {
+      "id": 56,
+      "name": "Gaming SSD",
+      "img": {
+        "url": "https://picsum.photos/id/56/600",
+        "alt": ""
+      },
+      "price": 379.11,
+      "stock": 28
+    },
+    {
+      "id": 57,
+      "name": "Gaming Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/57/600",
+        "alt": ""
+      },
+      "price": 80.66,
+      "stock": 40
+    },
+    {
+      "id": 58,
+      "name": "Gaming Camera",
+      "img": {
+        "url": "https://picsum.photos/id/58/600",
+        "alt": ""
+      },
+      "price": 397.08,
+      "stock": 108
+    },
+    {
+      "id": 59,
+      "name": "Gaming Router",
+      "img": {
+        "url": "https://picsum.photos/id/59/600",
+        "alt": ""
+      },
+      "price": 300.22,
+      "stock": 98
+    },
+    {
+      "id": 60,
+      "name": "Gaming Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/60/600",
+        "alt": ""
+      },
+      "price": 193.9,
+      "stock": 119
+    },
+    {
+      "id": 61,
+      "name": "HD Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/61/600",
+        "alt": ""
+      },
+      "price": 266.91,
+      "stock": 141
+    },
+    {
+      "id": 62,
+      "name": "HD Charger",
+      "img": {
+        "url": "https://picsum.photos/id/62/600",
+        "alt": ""
+      },
+      "price": 431.09,
+      "stock": 2
+    },
+    {
+      "id": 63,
+      "name": "HD Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/63/600",
+        "alt": ""
+      },
+      "price": 341.74,
+      "stock": 29
+    },
+    {
+      "id": 64,
+      "name": "HD Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/64/600",
+        "alt": ""
+      },
+      "price": 342.45,
+      "stock": 137
+    },
+    {
+      "id": 65,
+      "name": "HD Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/65/600",
+        "alt": ""
+      },
+      "price": 376.68,
+      "stock": 196
+    },
+    {
+      "id": 66,
+      "name": "HD SSD",
+      "img": {
+        "url": "https://picsum.photos/id/66/600",
+        "alt": ""
+      },
+      "price": 322.28,
+      "stock": 28
+    },
+    {
+      "id": 67,
+      "name": "HD Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/67/600",
+        "alt": ""
+      },
+      "price": 150.28,
+      "stock": 40
+    },
+    {
+      "id": 68,
+      "name": "HD Camera",
+      "img": {
+        "url": "https://picsum.photos/id/68/600",
+        "alt": ""
+      },
+      "price": 229.59,
+      "stock": 184
+    },
+    {
+      "id": 69,
+      "name": "HD Router",
+      "img": {
+        "url": "https://picsum.photos/id/69/600",
+        "alt": ""
+      },
+      "price": 438.55,
+      "stock": 67
+    },
+    {
+      "id": 70,
+      "name": "HD Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/70/600",
+        "alt": ""
+      },
+      "price": 486.08,
+      "stock": 195
+    },
+    {
+      "id": 71,
+      "name": "Eco Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/71/600",
+        "alt": ""
+      },
+      "price": 93.43,
+      "stock": 27
+    },
+    {
+      "id": 72,
+      "name": "Eco Charger",
+      "img": {
+        "url": "https://picsum.photos/id/72/600",
+        "alt": ""
+      },
+      "price": 435.91,
+      "stock": 76
+    },
+    {
+      "id": 73,
+      "name": "Eco Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/73/600",
+        "alt": ""
+      },
+      "price": 421.63,
+      "stock": 129
+    },
+    {
+      "id": 74,
+      "name": "Eco Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/74/600",
+        "alt": ""
+      },
+      "price": 306.44,
+      "stock": 39
+    },
+    {
+      "id": 75,
+      "name": "Eco Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/75/600",
+        "alt": ""
+      },
+      "price": 190.09,
+      "stock": 41
+    },
+    {
+      "id": 76,
+      "name": "Eco SSD",
+      "img": {
+        "url": "https://picsum.photos/id/76/600",
+        "alt": ""
+      },
+      "price": 271.99,
+      "stock": 199
+    },
+    {
+      "id": 77,
+      "name": "Eco Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/77/600",
+        "alt": ""
+      },
+      "price": 461.6,
+      "stock": 0
+    },
+    {
+      "id": 78,
+      "name": "Eco Camera",
+      "img": {
+        "url": "https://picsum.photos/id/78/600",
+        "alt": ""
+      },
+      "price": 301.48,
+      "stock": 125
+    },
+    {
+      "id": 79,
+      "name": "Eco Router",
+      "img": {
+        "url": "https://picsum.photos/id/79/600",
+        "alt": ""
+      },
+      "price": 14.64,
+      "stock": 92
+    },
+    {
+      "id": 80,
+      "name": "Eco Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/80/600",
+        "alt": ""
+      },
+      "price": 439.97,
+      "stock": 78
+    },
+    {
+      "id": 81,
+      "name": "Mini Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/81/600",
+        "alt": ""
+      },
+      "price": 123.53,
+      "stock": 61
+    },
+    {
+      "id": 82,
+      "name": "Mini Charger",
+      "img": {
+        "url": "https://picsum.photos/id/82/600",
+        "alt": ""
+      },
+      "price": 439.61,
+      "stock": 20
+    },
+    {
+      "id": 83,
+      "name": "Mini Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/83/600",
+        "alt": ""
+      },
+      "price": 47.4,
+      "stock": 124
+    },
+    {
+      "id": 84,
+      "name": "Mini Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/84/600",
+        "alt": ""
+      },
+      "price": 408.93,
+      "stock": 194
+    },
+    {
+      "id": 85,
+      "name": "Mini Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/85/600",
+        "alt": ""
+      },
+      "price": 268.69,
+      "stock": 32
+    },
+    {
+      "id": 86,
+      "name": "Mini SSD",
+      "img": {
+        "url": "https://picsum.photos/id/86/600",
+        "alt": ""
+      },
+      "price": 68.55,
+      "stock": 121
+    },
+    {
+      "id": 87,
+      "name": "Mini Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/87/600",
+        "alt": ""
+      },
+      "price": 473.69,
+      "stock": 42
+    },
+    {
+      "id": 88,
+      "name": "Mini Camera",
+      "img": {
+        "url": "https://picsum.photos/id/88/600",
+        "alt": ""
+      },
+      "price": 136.2,
+      "stock": 155
+    },
+    {
+      "id": 89,
+      "name": "Mini Router",
+      "img": {
+        "url": "https://picsum.photos/id/89/600",
+        "alt": ""
+      },
+      "price": 214.45,
+      "stock": 54
+    },
+    {
+      "id": 90,
+      "name": "Mini Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/90/600",
+        "alt": ""
+      },
+      "price": 464.81,
+      "stock": 193
+    },
+    {
+      "id": 91,
+      "name": "Ultra Headphones",
+      "img": {
+        "url": "https://picsum.photos/id/91/600",
+        "alt": ""
+      },
+      "price": 366.32,
+      "stock": 51
+    },
+    {
+      "id": 92,
+      "name": "Ultra Charger",
+      "img": {
+        "url": "https://picsum.photos/id/92/600",
+        "alt": ""
+      },
+      "price": 357.91,
+      "stock": 102
+    },
+    {
+      "id": 93,
+      "name": "Ultra Speaker",
+      "img": {
+        "url": "https://picsum.photos/id/93/600",
+        "alt": ""
+      },
+      "price": 497.6,
+      "stock": 166
+    },
+    {
+      "id": 94,
+      "name": "Ultra Keyboard",
+      "img": {
+        "url": "https://picsum.photos/id/94/600",
+        "alt": ""
+      },
+      "price": 189.84,
+      "stock": 132
+    },
+    {
+      "id": 95,
+      "name": "Ultra Monitor",
+      "img": {
+        "url": "https://picsum.photos/id/95/600",
+        "alt": ""
+      },
+      "price": 228.49,
+      "stock": 63
+    },
+    {
+      "id": 96,
+      "name": "Ultra SSD",
+      "img": {
+        "url": "https://picsum.photos/id/96/600",
+        "alt": ""
+      },
+      "price": 116.23,
+      "stock": 86
+    },
+    {
+      "id": 97,
+      "name": "Ultra Bulb",
+      "img": {
+        "url": "https://picsum.photos/id/97/600",
+        "alt": ""
+      },
+      "price": 15.41,
+      "stock": 141
+    },
+    {
+      "id": 98,
+      "name": "Ultra Camera",
+      "img": {
+        "url": "https://picsum.photos/id/98/600",
+        "alt": ""
+      },
+      "price": 118.91,
+      "stock": 56
+    },
+    {
+      "id": 99,
+      "name": "Ultra Router",
+      "img": {
+        "url": "https://picsum.photos/id/99/600",
+        "alt": ""
+      },
+      "price": 8.56,
+      "stock": 181
+    },
+    {
+      "id": 100,
+      "name": "Ultra Mouse",
+      "img": {
+        "url": "https://picsum.photos/id/100/600",
+        "alt": ""
+      },
+      "price": 317.4,
+      "stock": 58
+    }
+  ]
+}
