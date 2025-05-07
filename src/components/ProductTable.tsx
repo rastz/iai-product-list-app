@@ -244,7 +244,7 @@ function ProductTable({ data }: ProductTableProps) {
                 <TableRow>
                   <TableCell
                     colSpan={columns.length}
-                    className="py-12 text-center"
+                    className="py-20 text-center"
                   >
                     <p className="text-gray-500 italic">
                       No results found. Try adjusting your filters.
