@@ -5,6 +5,7 @@ interface UseProductDataHook {
   products: Product[];
   removeOne: (id: Product["id"]) => void;
   removeMany: (ids: Product["id"][]) => void;
+  updateOne: (updated: Product) => void;
 }
 
 function useProductsData(data: Product[]): UseProductDataHook {
@@ -20,7 +21,13 @@ function useProductsData(data: Product[]): UseProductDataHook {
     );
   }, []);
 
-  return { products, removeOne, removeMany };
+  const updateOne = useCallback((updated: Product) => {
+    setProducts((products) =>
+      products.map((product) => (product.id == updated.id ? updated : product)),
+    );
+  }, []);
+
+  return { products, removeOne, removeMany, updateOne };
 }
 
 export { useProductsData };
