@@ -26,13 +26,13 @@ import { EditProductDialog } from "./EditProductDialog";
 import { Search } from "./Search";
 import { Checkbox } from "./Checkbox";
 
-interface ProductTableProps {
+interface ReactTablePage {
   data: Product[];
 }
 
 const columnHelper = createColumnHelper<Product>();
 
-function ProductTable({ data }: ProductTableProps) {
+function ReactTable({ data }: ReactTablePage) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -350,4 +350,4 @@ function ProductTable({ data }: ProductTableProps) {
   );
 }
 
-export { ProductTable };
+export { ReactTable };

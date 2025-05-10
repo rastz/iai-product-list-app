@@ -1,11 +1,11 @@
 import { TablePageLayout } from "../components/layout/TablePageLayout";
 import data from "../data/products-100.json";
-import { ProductTable } from "../components/ProductTable";
+import { ReactTable } from "../components/ReactTable";
 
 function ReactTablePage() {
   return (
     <TablePageLayout>
-      <ProductTable data={data.items} />
+      <ReactTable data={data.items} />
     </TablePageLayout>
   );
 }
