@@ -10,15 +10,19 @@ import { useGlobalFilter } from "../hooks/useGlobalFilter";
 import { TableHead } from "./TableHead";
 import { Grid } from "./Grid";
 import { Checkbox } from "./Checkbox";
+import { usePriceFilter } from "../hooks/usePriceFilter";
+import { FilterBox } from "./common/FilterBox";
+import { RangeFilter } from "./common/RangeFilter";
 
 interface ProductTableProps {
   data: Product[];
 }
 
 function ProductTableV2({ data }: ProductTableProps) {
-  const { setFilterValue, filterValue, filteredData } = useGlobalFilter(data);
+  const globalFilter = useGlobalFilter(data);
+  const priceFilter = usePriceFilter(globalFilter.data);
 
-  const isTableEmpty = !filteredData.length;
+  const isTableEmpty = !priceFilter.data.length;
   const tableSize = data.length;
 
   return (
@@ -34,9 +38,26 @@ function ProductTableV2({ data }: ProductTableProps) {
               <Search
                 type="text"
                 placeholder="Find Product"
-                value={filterValue}
-                onChange={(event) => setFilterValue(event.target.value)}
+                value={globalFilter.value}
+                onChange={(event) => globalFilter.setValue(event.target.value)}
               />
+
+              <FilterBox
+                onReset={() => {
+                  priceFilter.setMinPrice(undefined);
+                  priceFilter.setMaxPrice(undefined);
+                }}
+              >
+                <RangeFilter
+                  label="Price"
+                  min={priceFilter.minPrice}
+                  max={priceFilter.maxPrice}
+                  onChange={({ min, max }) => {
+                    priceFilter.setMinPrice(min);
+                    priceFilter.setMaxPrice(max);
+                  }}
+                />
+              </FilterBox>
             </div>
 
             <div className="flex min-w-60 justify-end md:min-w-80">
@@ -58,7 +79,7 @@ function ProductTableV2({ data }: ProductTableProps) {
             </TableHeader>
 
             <TableBody>
-              {filteredData.map((product) => (
+              {priceFilter.data.map((product) => (
                 <TableRow key={product.id}>
                   <TableCell>
                     <img
