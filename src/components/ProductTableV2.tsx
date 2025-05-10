@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Product } from "../types";
 import { TableCell } from "./TableCell";
 import { Table } from "./Table";
@@ -14,6 +15,7 @@ import { RangeFilter } from "./common/RangeFilter";
 import { useProductFilters } from "../hooks/useProductFilters";
 import { useProductsData } from "../hooks/useProductData";
 import { useSelectedProducts } from "../hooks/useSelectedProducts";
+import { RemoveProductDialog } from "./RemoveProductDialog";
 
 interface ProductTableProps {
   data: Product[];
@@ -36,8 +38,11 @@ function ProductTableV2({ data }: ProductTableProps) {
     resetPriceFilter,
     resetStockFilter,
   } = useProductFilters(products);
-  const { selectedProduct, selectedProducts, toggle, clear } =
+  const { selectedIds, selectedProducts, toggle, clear } =
     useSelectedProducts(filteredProducts);
+  const [productToRemove, setProductToRemove] = useState<Product | null>(null);
+  const [singleDialogOpen, setSingleDialogOpen] = useState(false);
+  const [manyDialogOpen, setManyDialogOpen] = useState(false);
 
   const isTableEmpty = !filteredProducts.length;
   const tableSize = data.length;
@@ -92,8 +97,7 @@ function ProductTableV2({ data }: ProductTableProps) {
                 disabled={!isSelected}
                 variant={isSelected ? "danger" : "disabled"}
                 onClick={() => {
-                  removeMany(selectedProducts.map((product) => product.id));
-                  clear();
+                  setManyDialogOpen(true);
                 }}
               >
                 Remove selected ({selectedProducts.length})
@@ -137,7 +141,10 @@ function ProductTableV2({ data }: ProductTableProps) {
                       </Button>
                       <Button
                         variant="secondary"
-                        onClick={() => removeOne(product.id)}
+                        onClick={() => {
+                          setProductToRemove(product);
+                          setSingleDialogOpen(true);
+                        }}
                       >
                         Remove
                       </Button>
@@ -145,8 +152,7 @@ function ProductTableV2({ data }: ProductTableProps) {
                   </TableCell>
                   <TableCell>
                     <Checkbox
-                      checked={selectedProduct.has(product.id)}
-                      disabled={false}
+                      checked={selectedIds.has(product.id)}
                       onChange={() => toggle(product.id)}
                     />
                   </TableCell>
@@ -166,6 +172,42 @@ function ProductTableV2({ data }: ProductTableProps) {
           </Table>
         </div>
       </div>
+
+      {productToRemove && (
+        <RemoveProductDialog
+          open={singleDialogOpen}
+          productName={productToRemove.name}
+          onOpenChange={(open) => {
+            setSingleDialogOpen(open);
+            if (!open) setProductToRemove(null);
+          }}
+          onConfirm={() => {
+            removeOne(productToRemove.id);
+            setSingleDialogOpen(false);
+            setProductToRemove(null);
+          }}
+          onCancel={() => {
+            setSingleDialogOpen(false);
+            setProductToRemove(null);
+          }}
+        />
+      )}
+
+      <RemoveProductDialog
+        open={manyDialogOpen}
+        productName={`${selectedProducts.length} product(s)`}
+        onOpenChange={(open) => {
+          setManyDialogOpen(open);
+        }}
+        onConfirm={() => {
+          removeMany(selectedProducts.map((product) => product.id));
+          clear();
+          setManyDialogOpen(false);
+        }}
+        onCancel={() => {
+          setManyDialogOpen(false);
+        }}
+      />
     </>
   );
 }
