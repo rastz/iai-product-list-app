@@ -1,4 +1,10 @@
-import { useState, useMemo, Dispatch, SetStateAction } from "react";
+import {
+  useState,
+  useMemo,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+} from "react";
 import { Product } from "../types";
 
 export interface UsePriceFilterHook {
@@ -7,20 +13,37 @@ export interface UsePriceFilterHook {
   maxPrice: number | undefined;
   setMinPrice: Dispatch<SetStateAction<number | undefined>>;
   setMaxPrice: Dispatch<SetStateAction<number | undefined>>;
+  predicate: (product: Product) => boolean;
+}
+
+function productPriceFilter(
+  product: Product,
+  minPrice?: number,
+  maxPrice?: number,
+) {
+  if (minPrice != null && product.stock < minPrice) return false;
+  if (maxPrice != null && product.stock > maxPrice) return false;
+
+  return true;
 }
 
 export function usePriceFilter(data: Product[]): UsePriceFilterHook {
   const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
 
-  const filteredData = useMemo(() => {
-    return data.filter(({ price }) => {
-      if (minPrice !== undefined && price < minPrice) return false;
-      if (maxPrice !== undefined && price > maxPrice) return false;
+  const predicate = useCallback(
+    (product: Product) => productPriceFilter(product, minPrice, maxPrice),
+    [minPrice, maxPrice],
+  );
 
-      return true;
-    });
-  }, [data, minPrice, maxPrice]);
+  const filteredData = useMemo(() => data.filter(predicate), [data, predicate]);
 
-  return { data: filteredData, minPrice, maxPrice, setMinPrice, setMaxPrice };
+  return {
+    data: filteredData,
+    minPrice,
+    maxPrice,
+    setMinPrice,
+    setMaxPrice,
+    predicate,
+  };
 }
