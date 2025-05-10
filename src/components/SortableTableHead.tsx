@@ -1,9 +1,9 @@
-import { SortDirection } from "@tanstack/react-table";
 import { ComponentProps } from "react";
 import { CELL_SIZE } from "../const";
 
+type SortDirection = "asc" | "desc" | false;
 interface SortableTableHeadProps extends ComponentProps<"th"> {
-  sortDirection: SortDirection | false;
+  sortDirection: SortDirection;
 }
 
 const UP_ARROW = "↑";
