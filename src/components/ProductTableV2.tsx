@@ -12,12 +12,15 @@ import { Checkbox } from "./Checkbox";
 import { FilterBox } from "./common/FilterBox";
 import { RangeFilter } from "./common/RangeFilter";
 import { useProductFilters } from "../hooks/useProductFilters";
+import { useProductsData } from "../hooks/useProductData";
+import { useSelectedProducts } from "../hooks/useSelectedProducts";
 
 interface ProductTableProps {
   data: Product[];
 }
 
 function ProductTableV2({ data }: ProductTableProps) {
+  const { products, removeOne, removeMany } = useProductsData(data);
   const {
     filteredProducts,
     filterProduct,
@@ -32,10 +35,13 @@ function ProductTableV2({ data }: ProductTableProps) {
     setMaxStock,
     resetPriceFilter,
     resetStockFilter,
-  } = useProductFilters(data);
+  } = useProductFilters(products);
+  const { selectedProduct, selectedProducts, toggle, clear } =
+    useSelectedProducts(filteredProducts);
 
   const isTableEmpty = !filteredProducts.length;
   const tableSize = data.length;
+  const isSelected = selectedProducts.length > 0;
 
   return (
     <>
@@ -82,7 +88,16 @@ function ProductTableV2({ data }: ProductTableProps) {
             </div>
 
             <div className="flex min-w-60 justify-end md:min-w-80">
-              <Button variant="disabled">Remove selected (0)</Button>
+              <Button
+                disabled={!isSelected}
+                variant={isSelected ? "danger" : "disabled"}
+                onClick={() => {
+                  removeMany(selectedProducts.map((product) => product.id));
+                  clear();
+                }}
+              >
+                Remove selected ({selectedProducts.length})
+              </Button>
             </div>
           </div>
 
@@ -120,16 +135,19 @@ function ProductTableV2({ data }: ProductTableProps) {
                       <Button variant="primary" onClick={() => null}>
                         Edit
                       </Button>
-                      <Button variant="secondary" onClick={() => null}>
+                      <Button
+                        variant="secondary"
+                        onClick={() => removeOne(product.id)}
+                      >
                         Remove
                       </Button>
                     </Grid>
                   </TableCell>
                   <TableCell>
                     <Checkbox
-                      checked={false}
+                      checked={selectedProduct.has(product.id)}
                       disabled={false}
-                      onChange={() => null}
+                      onChange={() => toggle(product.id)}
                     />
                   </TableCell>
                 </TableRow>
