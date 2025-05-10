@@ -55,8 +55,8 @@ function CustomTable({ data }: CustomTableProps) {
   const [manyDialogOpen, setManyDialogOpen] = useState(false);
 
   const isTableEmpty = !filteredProducts.length;
-  const tableSize = data.length;
   const isSelected = selectedProducts.length > 0;
+  const emptyTableColSpan = 7;
 
   return (
     <>
@@ -194,7 +194,10 @@ function CustomTable({ data }: CustomTableProps) {
 
               {isTableEmpty && (
                 <TableRow>
-                  <TableCell colSpan={tableSize} className="py-20 text-center">
+                  <TableCell
+                    colSpan={emptyTableColSpan}
+                    className="py-20 text-center"
+                  >
                     <p className="text-gray-500 italic">
                       No results found. Try adjusting your filters.
                     </p>
