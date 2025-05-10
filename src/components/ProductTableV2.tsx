@@ -17,6 +17,8 @@ import { useProductsData } from "../hooks/useProductData";
 import { useSelectedProducts } from "../hooks/useSelectedProducts";
 import { RemoveProductDialog } from "./RemoveProductDialog";
 import { EditProductDialog } from "./EditProductDialog";
+import { useSortProducts } from "../hooks/useSortProducts";
+import { SortableTableHead } from "./SortableTableHead";
 
 interface ProductTableProps {
   data: Product[];
@@ -24,6 +26,7 @@ interface ProductTableProps {
 
 function ProductTableV2({ data }: ProductTableProps) {
   const { products, removeOne, removeMany, updateOne } = useProductsData(data);
+
   const {
     filteredProducts,
     filterProduct,
@@ -39,8 +42,13 @@ function ProductTableV2({ data }: ProductTableProps) {
     resetPriceFilter,
     resetStockFilter,
   } = useProductFilters(products);
+
+  const { sortedProducts, getDirection, sortBy } =
+    useSortProducts(filteredProducts);
+
   const { selectedIds, selectedProducts, toggle, clear } =
-    useSelectedProducts(filteredProducts);
+    useSelectedProducts(sortedProducts);
+
   const [productToRemove, setProductToRemove] = useState<Product | null>(null);
   const [editProduct, setEditProduct] = useState<Product | null>(null);
   const [singleDialogOpen, setSingleDialogOpen] = useState(false);
@@ -111,17 +119,37 @@ function ProductTableV2({ data }: ProductTableProps) {
             <TableHeader>
               <TableRow>
                 <TableHead>Icon</TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Stock</TableHead>
-                <TableHead>ID</TableHead>
+                <SortableTableHead
+                  onClick={() => sortBy("name")}
+                  sortDirection={getDirection("name")}
+                >
+                  Name
+                </SortableTableHead>
+                <SortableTableHead
+                  onClick={() => sortBy("price")}
+                  sortDirection={getDirection("price")}
+                >
+                  Price
+                </SortableTableHead>
+                <SortableTableHead
+                  onClick={() => sortBy("stock")}
+                  sortDirection={getDirection("stock")}
+                >
+                  Stock
+                </SortableTableHead>
+                <SortableTableHead
+                  onClick={() => sortBy("id")}
+                  sortDirection={getDirection("id")}
+                >
+                  ID
+                </SortableTableHead>
                 <TableHead>Action</TableHead>
                 <TableHead>Select</TableHead>
               </TableRow>
             </TableHeader>
 
             <TableBody>
-              {filteredProducts.map((product) => (
+              {sortedProducts.map((product) => (
                 <TableRow key={product.id}>
                   <TableCell>
                     <img
