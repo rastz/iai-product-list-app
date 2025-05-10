@@ -63,7 +63,7 @@ function ProductTableV2({ data }: ProductTableProps) {
       <div className="overflow-x-auto">
         <div className="flex w-max flex-col gap-y-8 md:w-full">
           <h1 className="text-left text-5xl font-bold text-neutral-700">
-            Table of Products
+            Custom Table of Products
           </h1>
 
           <div className="flex w-full items-start justify-between gap-2">
