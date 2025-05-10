@@ -1,11 +1,11 @@
 import { TablePageLayout } from "../components/layout/TablePageLayout";
-import { ProductTableV2 } from "../components/ProductTableV2";
+import { CustomTable } from "../components/CustomTable";
 import data from "../data/products-100.json";
 
 function CustomTablePage() {
   return (
     <TablePageLayout>
-      <ProductTableV2 data={data.items} />
+      <CustomTable data={data.items} />
     </TablePageLayout>
   );
 }

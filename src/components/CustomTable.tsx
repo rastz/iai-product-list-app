@@ -24,7 +24,7 @@ interface ProductTableProps {
   data: Product[];
 }
 
-function ProductTableV2({ data }: ProductTableProps) {
+function CustomTable({ data }: ProductTableProps) {
   const { products, removeOne, removeMany, updateOne } = useProductsData(data);
 
   const {
@@ -256,4 +256,4 @@ function ProductTableV2({ data }: ProductTableProps) {
   );
 }
 
-export { ProductTableV2 };
+export { CustomTable };
