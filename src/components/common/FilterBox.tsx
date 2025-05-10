@@ -51,7 +51,7 @@ function FilterBox({ children, onReset }: FiltersButtonProps) {
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 bg-black/40" />
-        <Dialog.Content className="animate-slideUp fixed right-0 bottom-0 left-0 z-50 flex max-h-1/2 flex-col gap-y-4 overflow-auto rounded-t-xl bg-white p-4 shadow-lg">
+        <Dialog.Content className="animate-slideUp fixed right-0 bottom-0 left-0 z-50 flex max-h-fit flex-col gap-y-4 overflow-auto rounded-t-xl bg-white p-4 shadow-lg">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex flex-col gap-y-1">
               <Dialog.Title className="text-lg font-medium">
