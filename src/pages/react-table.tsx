@@ -1,13 +1,13 @@
 import { TablePageLayout } from "../components/layout/TablePageLayout";
-import { ProductTableV2 } from "../components/ProductTableV2";
 import data from "../data/products-100.json";
+import { ProductTable } from "../components/ProductTable";
 
-function ProductTableV2Page() {
+function ReactTablePage() {
   return (
     <TablePageLayout>
-      <ProductTableV2 data={data.items} />
+      <ProductTable data={data.items} />
     </TablePageLayout>
   );
 }
 
-export { ProductTableV2Page };
+export { ReactTablePage };

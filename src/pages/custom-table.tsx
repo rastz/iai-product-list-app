@@ -1,13 +1,13 @@
 import { TablePageLayout } from "../components/layout/TablePageLayout";
+import { ProductTableV2 } from "../components/ProductTableV2";
 import data from "../data/products-100.json";
-import { ProductTable } from "../components/ProductTable";
 
-function ProductTableV1Page() {
+function CustomTablePage() {
   return (
     <TablePageLayout>
-      <ProductTable data={data.items} />
+      <ProductTableV2 data={data.items} />
     </TablePageLayout>
   );
 }
 
-export { ProductTableV1Page };
+export { CustomTablePage };

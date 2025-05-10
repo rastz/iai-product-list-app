@@ -20,10 +20,10 @@ function TablePageLayout({ children }: TablePageLayoutProps) {
     <Main>
       <Section>
         <Nav>
-          <Link className={LINK_STYLE} to="/">
+          <Link className={LINK_STYLE} to="/react-table">
             React Table
           </Link>
-          <Link className={LINK_STYLE} to="/product-table-v2">
+          <Link className={LINK_STYLE} to="/custom-table">
             Custon Table
           </Link>
         </Nav>
