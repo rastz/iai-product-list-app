@@ -2,7 +2,7 @@ import { useState, useMemo, Dispatch, SetStateAction } from "react";
 import { Product } from "../types";
 
 export interface UsePriceFilterHook {
-  filteredData: Product[];
+  data: Product[];
   minPrice: number | undefined;
   maxPrice: number | undefined;
   setMinPrice: Dispatch<SetStateAction<number | undefined>>;
@@ -22,5 +22,5 @@ export function usePriceFilter(data: Product[]): UsePriceFilterHook {
     });
   }, [data, minPrice, maxPrice]);
 
-  return { filteredData, minPrice, maxPrice, setMinPrice, setMaxPrice };
+  return { data: filteredData, minPrice, maxPrice, setMinPrice, setMaxPrice };
 }
