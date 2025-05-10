@@ -1,36 +1,17 @@
-import { useState, useCallback } from "react";
+import { useSelection } from "./useSelection";
 import { Product } from "../types";
 
-function useSelectedProducts(products: Product[]) {
-  const [selectedProduct, setSelectedProduct] = useState<Set<Product["id"]>>(
-    new Set(),
-  );
-
-  const toggle = useCallback((id: Product["id"]) => {
-    setSelectedProduct((prev) => {
-      const next = new Set(prev);
-
-      if (next.has(id)) {
-        next.delete(id);
-
-        return next;
-      }
-
-      next.add(id);
-
-      return next;
-    });
-  }, []);
-
-  const clear = useCallback(() => {
-    setSelectedProduct(new Set());
-  }, []);
+export function useSelectedProducts(products: Product[]) {
+  const { selectedIds, toggle, clear } = useSelection<Product["id"]>([]);
 
   const selectedProducts = products.filter((product) =>
-    selectedProduct.has(product.id),
+    selectedIds.has(product.id),
   );
 
-  return { selectedProduct, selectedProducts, toggle, clear };
+  return {
+    selectedIds,
+    selectedProducts,
+    toggle,
+    clear,
+  };
 }
-
-export { useSelectedProducts };
