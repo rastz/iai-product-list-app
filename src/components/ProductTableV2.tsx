@@ -16,13 +16,14 @@ import { useProductFilters } from "../hooks/useProductFilters";
 import { useProductsData } from "../hooks/useProductData";
 import { useSelectedProducts } from "../hooks/useSelectedProducts";
 import { RemoveProductDialog } from "./RemoveProductDialog";
+import { EditProductDialog } from "./EditProductDialog";
 
 interface ProductTableProps {
   data: Product[];
 }
 
 function ProductTableV2({ data }: ProductTableProps) {
-  const { products, removeOne, removeMany } = useProductsData(data);
+  const { products, removeOne, removeMany, updateOne } = useProductsData(data);
   const {
     filteredProducts,
     filterProduct,
@@ -41,6 +42,7 @@ function ProductTableV2({ data }: ProductTableProps) {
   const { selectedIds, selectedProducts, toggle, clear } =
     useSelectedProducts(filteredProducts);
   const [productToRemove, setProductToRemove] = useState<Product | null>(null);
+  const [editProduct, setEditProduct] = useState<Product | null>(null);
   const [singleDialogOpen, setSingleDialogOpen] = useState(false);
   const [manyDialogOpen, setManyDialogOpen] = useState(false);
 
@@ -136,7 +138,10 @@ function ProductTableV2({ data }: ProductTableProps) {
                   <TableCell>{product.id}</TableCell>
                   <TableCell>
                     <Grid>
-                      <Button variant="primary" onClick={() => null}>
+                      <Button
+                        variant="primary"
+                        onClick={() => setEditProduct(product)}
+                      >
                         Edit
                       </Button>
                       <Button
@@ -208,6 +213,17 @@ function ProductTableV2({ data }: ProductTableProps) {
           setManyDialogOpen(false);
         }}
       />
+
+      {editProduct && (
+        <EditProductDialog
+          product={editProduct}
+          onClose={() => setEditProduct(null)}
+          onSave={(updatedProduct) => {
+            updateOne(updatedProduct);
+            setEditProduct(null);
+          }}
+        />
+      )}
     </>
   );
 }
