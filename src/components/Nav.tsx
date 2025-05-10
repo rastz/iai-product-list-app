@@ -6,7 +6,7 @@ interface NavProps {
 
 function Nav({ children }: NavProps) {
   return (
-    <nav className="flex max-w-1/3 items-center justify-center gap-2 p-8">
+    <nav className="flex max-w-fit items-center justify-center gap-2 p-8">
       {children}
     </nav>
   );
