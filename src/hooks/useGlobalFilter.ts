@@ -2,9 +2,9 @@ import { useState, useMemo, Dispatch } from "react";
 import { Product } from "../types";
 
 interface UseGlobalFilterHook {
-  globalfilteredData: Product[];
-  globalfilterValue: string;
-  setGlobalFilterValue: Dispatch<React.SetStateAction<string>>;
+  data: Product[];
+  value: string;
+  setValue: Dispatch<React.SetStateAction<string>>;
 }
 
 const normalize = (value: string | number) =>
@@ -29,7 +29,11 @@ function useGlobalFilter(data: Product[]): UseGlobalFilterHook {
     );
   }, [data, globalfilterValue]);
 
-  return { globalfilteredData, globalfilterValue, setGlobalFilterValue };
+  return {
+    data: globalfilteredData,
+    value: globalfilterValue,
+    setValue: setGlobalFilterValue,
+  };
 }
 
 export { useGlobalFilter };
