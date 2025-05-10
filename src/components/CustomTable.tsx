@@ -20,11 +20,11 @@ import { EditProductDialog } from "./EditProductDialog";
 import { useSortProducts } from "../hooks/useSortProducts";
 import { SortableTableHead } from "./SortableTableHead";
 
-interface ProductTableProps {
+interface CustomTableProps {
   data: Product[];
 }
 
-function CustomTable({ data }: ProductTableProps) {
+function CustomTable({ data }: CustomTableProps) {
   const { products, removeOne, removeMany, updateOne } = useProductsData(data);
 
   const {
