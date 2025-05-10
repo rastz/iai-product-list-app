@@ -1,39 +1,53 @@
-import { useState, useMemo, Dispatch } from "react";
+import {
+  useState,
+  useMemo,
+  useCallback,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { Product } from "../types";
 
-interface UseGlobalFilterHook {
+export interface UseGlobalFilterHook {
   data: Product[];
   value: string;
-  setValue: Dispatch<React.SetStateAction<string>>;
+  setValue: Dispatch<SetStateAction<string>>;
+  predicate: (product: Product) => boolean;
 }
 
 const normalize = (value: string | number) =>
   value.toString().toLowerCase().trim();
 
 function productGlobalFilter(product: Product, filterValue: string) {
+  const normalizedFilterValue = normalize(filterValue);
+
+  /**
+   * If the filter value is empty, skip filtering
+   */
+  if (!normalizedFilterValue) {
+    return true;
+  }
+
   return [product.name, product.id, product.price, product.stock].some(
-    (value) => normalize(value).includes(normalize(filterValue)),
+    (field) => normalize(field).includes(normalizedFilterValue),
   );
 }
 
-function useGlobalFilter(data: Product[]): UseGlobalFilterHook {
-  const [globalfilterValue, setGlobalFilterValue] = useState("");
+export function useGlobalFilter(data: Product[]): UseGlobalFilterHook {
+  const [value, setValue] = useState("");
 
-  const globalfilteredData = useMemo(() => {
-    if (!normalize(globalfilterValue)) {
-      return data;
-    }
+  const predicate = useCallback(
+    (product: Product) => productGlobalFilter(product, value),
+    [value],
+  );
 
-    return data.filter((product) =>
-      productGlobalFilter(product, globalfilterValue),
-    );
-  }, [data, globalfilterValue]);
+  const filteredData = useMemo(() => {
+    return data.filter(predicate);
+  }, [data, predicate]);
 
   return {
-    data: globalfilteredData,
-    value: globalfilterValue,
-    setValue: setGlobalFilterValue,
+    data: filteredData,
+    value,
+    setValue,
+    predicate,
   };
 }
-
-export { useGlobalFilter };
