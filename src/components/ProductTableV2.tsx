@@ -6,23 +6,35 @@ import { TableRow } from "./TableRow";
 import { TableBody } from "./TableBody";
 import { Button } from "./Button";
 import { Search } from "./Search";
-import { useGlobalFilter } from "../hooks/useGlobalFilter";
 import { TableHead } from "./TableHead";
 import { Grid } from "./Grid";
 import { Checkbox } from "./Checkbox";
-import { usePriceFilter } from "../hooks/usePriceFilter";
 import { FilterBox } from "./common/FilterBox";
 import { RangeFilter } from "./common/RangeFilter";
+import { useProductFilters } from "../hooks/useProductFilters";
 
 interface ProductTableProps {
   data: Product[];
 }
 
 function ProductTableV2({ data }: ProductTableProps) {
-  const globalFilter = useGlobalFilter(data);
-  const priceFilter = usePriceFilter(globalFilter.data);
+  const {
+    filteredProducts,
+    filterProduct,
+    minPrice,
+    maxPrice,
+    minStock,
+    maxStock,
+    setFilterProduct,
+    setMinPrice,
+    setMaxPrice,
+    setMinStock,
+    setMaxStock,
+    resetPriceFilter,
+    resetStockFilter,
+  } = useProductFilters(data);
 
-  const isTableEmpty = !priceFilter.data.length;
+  const isTableEmpty = !filteredProducts.length;
   const tableSize = data.length;
 
   return (
@@ -38,23 +50,32 @@ function ProductTableV2({ data }: ProductTableProps) {
               <Search
                 type="text"
                 placeholder="Find Product"
-                value={globalFilter.value}
-                onChange={(event) => globalFilter.setValue(event.target.value)}
+                value={filterProduct}
+                onChange={(event) => setFilterProduct(event.target.value)}
               />
 
               <FilterBox
                 onReset={() => {
-                  priceFilter.setMinPrice(undefined);
-                  priceFilter.setMaxPrice(undefined);
+                  resetPriceFilter();
+                  resetStockFilter();
                 }}
               >
                 <RangeFilter
                   label="Price"
-                  min={priceFilter.minPrice}
-                  max={priceFilter.maxPrice}
+                  min={minPrice}
+                  max={maxPrice}
                   onChange={({ min, max }) => {
-                    priceFilter.setMinPrice(min);
-                    priceFilter.setMaxPrice(max);
+                    setMinPrice(min);
+                    setMaxPrice(max);
+                  }}
+                />
+                <RangeFilter
+                  label="Stock"
+                  min={minStock}
+                  max={maxStock}
+                  onChange={({ min, max }) => {
+                    setMinStock(min);
+                    setMaxStock(max);
                   }}
                 />
               </FilterBox>
@@ -79,7 +100,7 @@ function ProductTableV2({ data }: ProductTableProps) {
             </TableHeader>
 
             <TableBody>
-              {priceFilter.data.map((product) => (
+              {filteredProducts.map((product) => (
                 <TableRow key={product.id}>
                   <TableCell>
                     <img
