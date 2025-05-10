@@ -7,7 +7,8 @@ interface UseGlobalFilterHook {
   setGlobalFilterValue: Dispatch<React.SetStateAction<string>>;
 }
 
-const normalize = (value: string | number) => value.toString().toLowerCase();
+const normalize = (value: string | number) =>
+  value.toString().toLowerCase().trim();
 
 function productGlobalFilter(product: Product, filterValue: string) {
   return [product.name, product.id, product.price, product.stock].some(
@@ -19,7 +20,7 @@ function useGlobalFilter(data: Product[]): UseGlobalFilterHook {
   const [globalfilterValue, setGlobalFilterValue] = useState("");
 
   const globalfilteredData = useMemo(() => {
-    if (!globalfilterValue.trim()) {
+    if (!normalize(globalfilterValue)) {
       return data;
     }
 
