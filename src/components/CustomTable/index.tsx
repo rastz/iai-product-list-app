@@ -72,7 +72,7 @@ function CustomTable({ data }: CustomTableProps) {
   return (
     <>
       <div className="overflow-x-auto">
-        <div className="flex w-max flex-col gap-y-8 md:w-full">
+        <div className="flex w-max flex-col gap-y-8 lg:w-full">
           <h1 className="text-left text-5xl font-bold text-neutral-700">
             Custom Table
           </h1>
