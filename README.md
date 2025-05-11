@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Vite](https://vitejs.dev/) and uses React with TypeScript.
 
+This project provides two versions of the product list, each with a different approach to table management:
+
+- React Table (located in `/react-table`): Utilizes the `@tanstack/react-table` library for table logic and state management.
+- Custom Table (located in `/custom-table`): Implements a custom table logic and state managment.
+
 ## Prerequisites
 
 - Node.js (v22 or later)
