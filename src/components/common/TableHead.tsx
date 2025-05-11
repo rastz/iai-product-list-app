@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import { CELL_SIZE } from "../const";
+import { CELL_SIZE } from "../../const";
 
 type TableHeadProps = ComponentProps<"th">;
 

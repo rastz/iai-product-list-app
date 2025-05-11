@@ -1,8 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { Button } from "./Button";
 import clsx from "clsx";
 import { useMedia } from "react-use";
-import { useWait } from "../hooks/useWait";
+import { useWait } from "../../hooks/useWait";
+import { Button } from "./Button";
 
 interface RemoveProductDialogProps {
   open: boolean;

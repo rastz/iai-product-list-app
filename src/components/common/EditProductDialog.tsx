@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
 import { z } from "zod";
 import { useState, useEffect, FormEvent } from "react";
-import { Product } from "../types";
+import { Product } from "../../types";
 import { Button } from "./Button";
 import { useMedia } from "react-use";
 import { Input } from "./Input";

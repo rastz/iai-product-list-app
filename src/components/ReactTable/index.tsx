@@ -1,30 +1,31 @@
 import {
-  ColumnFiltersState,
   createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
-  getPaginationRowModel,
   SortingState,
+  ColumnFiltersState,
   useReactTable,
+  getCoreRowModel,
+  getSortedRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  flexRender,
 } from "@tanstack/react-table";
-import { Product } from "../types";
-import { TableCell } from "./TableCell";
-import { Table } from "./Table";
-import { TableHeader } from "./TableHeader";
-import { TableRow } from "./TableRow";
-import { TableHead } from "./TableHead";
-import { TableBody } from "./TableBody";
-import { Grid } from "./Grid";
-import { Button } from "./Button";
-import { Fragment, useState } from "react";
-import { SortableTableHead } from "./SortableTableHead";
+import { useState } from "react";
+import { Fragment } from "react/jsx-runtime";
+import { Product } from "../../types";
+import { Button } from "../common/Button";
+import { Checkbox } from "../common/Checkbox";
+import { EditProductDialog } from "../common/EditProductDialog";
+import { Grid } from "../common/Grid";
+import { RemoveProductDialog } from "../common/RemoveProductDialog";
+import { Search } from "../common/Search";
+import { SortableTableHead } from "../common/SortableTableHead";
+import { Table } from "../common/Table";
+import { TableBody } from "../common/TableBody";
+import { TableCell } from "../common/TableCell";
+import { TableHead } from "../common/TableHead";
+import { TableHeader } from "../common/TableHeader";
+import { TableRow } from "../common/TableRow";
 import { Filters } from "./Filters";
-import { RemoveProductDialog } from "./RemoveProductDialog";
-import { EditProductDialog } from "./EditProductDialog";
-import { Search } from "./Search";
-import { Checkbox } from "./Checkbox";
 
 interface ReactTablePage {
   data: Product[];

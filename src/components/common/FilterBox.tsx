@@ -1,8 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useState, useRef } from "react";
 import { useClickAway, useKey } from "react-use";
-import { Button } from "../Button";
 import { CloseIcon } from "../Icons/CloseIcon";
+import { Button } from "./Button";
 
 interface FiltersButtonProps {
   children: ReactNode;

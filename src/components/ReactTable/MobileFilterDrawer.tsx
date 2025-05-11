@@ -1,9 +1,9 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { RangeFilter } from "./RangeFilter";
-import { Button } from "./Button";
 import { Table } from "@tanstack/react-table";
-import { Product } from "../types";
-import { CloseIcon } from "./Icons/CloseIcon";
+import { Product } from "../../types";
+import { Button } from "../common/Button";
+import { CloseIcon } from "../Icons/CloseIcon";
+import { RangeFilter } from "./RangeFilter";
 
 interface MobileFilterDrawerProps {
   table: Table<Product>;

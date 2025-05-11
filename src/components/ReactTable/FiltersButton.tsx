@@ -1,9 +1,9 @@
 import { Table } from "@tanstack/react-table";
-import { Product } from "../types";
-import { Button } from "./Button";
-import { useRef, useState } from "react";
-import { RangeFilter } from "./RangeFilter";
+import { useState, useRef } from "react";
 import { useClickAway, useKey } from "react-use";
+import { Product } from "../../types";
+import { Button } from "../common/Button";
+import { RangeFilter } from "./RangeFilter";
 
 interface FiltersButtonProps {
   table: Table<Product>;

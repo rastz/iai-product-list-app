@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import { useFixRadixScrollLock } from "../../hooks/useFixRadixScrollLock";
-import { Main } from "../Main";
-import { Box } from "../Box";
-import { Section } from "../Section";
+import { Main } from "../common/Main";
+import { Box } from "../common/Box";
+import { Section } from "../common/Section";
 import { Link } from "react-router-dom";
-import Nav from "../Nav";
+import Nav from "../common/Nav";
 
 interface TablePageLayoutProps {
   children: ReactNode;

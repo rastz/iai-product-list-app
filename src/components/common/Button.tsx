@@ -1,6 +1,6 @@
 import { ComponentProps, ReactNode } from "react";
-import { FilterIcon } from "./Icons/FilterIcon";
-import { SpinnerIcon } from "./Icons/SpinnerIcon";
+import { FilterIcon } from "../Icons/FilterIcon";
+import { SpinnerIcon } from "../Icons/SpinnerIcon";
 
 type Variant = "primary" | "secondary" | "danger" | "loading" | "disabled";
 type Icon = "filters";

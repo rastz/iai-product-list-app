@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { Input } from "../Input";
+import { Input } from "./Input";
 
 interface RangeFilterProps {
   label: string;
