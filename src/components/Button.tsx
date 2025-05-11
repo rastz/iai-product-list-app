@@ -17,15 +17,14 @@ const ICONS: Record<Icon, ReactNode> = {
 const VARIANTS: Record<Variant, string> = {
   primary: "bg-gray-900 text-white hover:bg-gray-800 cursor-pointer",
   secondary:
-    "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200 cursor-pointer border",
-  danger: "bg-red-700 text-white hover:bg-red-800 cursor-pointer border",
-  loading: "bg-gray-200 cursor-not-allowed",
-  disabled:
-    "text-gray-900 border border-gray-200 bg-gray-200 cursor-not-allowed",
+    "bg-gray-50 text-gray-900 hover:bg-gray-100 border-gray-200 cursor-pointer",
+  danger: "bg-red-700 text-white hover:bg-red-800 cursor-pointer",
+  loading: "bg-gray-200 cursor-not-allowed border-gray-200",
+  disabled: "text-gray-900 border-gray-200 bg-gray-200 cursor-not-allowed",
 };
 
 const DEFAULT_CLASSES =
-  "w-full rounded-sm px-4 py-2 select-none grid auto-cols-max gap-2 place-content-center grid-flow-col";
+  "w-full rounded-sm px-4 py-2 select-none grid auto-cols-max gap-2 place-content-center grid-flow-col border";
 
 function Button({ children, variant, icon, ...restProps }: ButtonProps) {
   const isLoading = variant === "loading";
