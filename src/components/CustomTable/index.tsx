@@ -172,7 +172,7 @@ function CustomTable({ data }: CustomTableProps) {
                     />
                   </TableCell>
                   <TableCell>{product.name}</TableCell>
-                  <TableCell>{product.price}</TableCell>
+                  <TableCell>{`$${product.price}`}</TableCell>
                   <TableCell>{product.stock}</TableCell>
                   <TableCell>{product.id}</TableCell>
                   <TableCell>
