@@ -19,6 +19,7 @@ import { RemoveProductDialog } from "./RemoveProductDialog";
 import { EditProductDialog } from "./EditProductDialog";
 import { useSortProducts } from "../hooks/useSortProducts";
 import { SortableTableHead } from "./SortableTableHead";
+import { usePagination } from "../hooks/usePagination";
 
 interface CustomTableProps {
   data: Product[];
@@ -46,6 +47,16 @@ function CustomTable({ data }: CustomTableProps) {
   const { sortedProducts, getDirection, sortBy } =
     useSortProducts(filteredProducts);
 
+  const {
+    paginatedProducts,
+    pageIndex,
+    pageCount,
+    hasNextPage,
+    hasPrevPage,
+    nextPage,
+    prevPage,
+  } = usePagination(sortedProducts);
+
   const { selectedIds, selectedProducts, toggle, clear } =
     useSelectedProducts(sortedProducts);
 
@@ -54,7 +65,7 @@ function CustomTable({ data }: CustomTableProps) {
   const [singleDialogOpen, setSingleDialogOpen] = useState(false);
   const [manyDialogOpen, setManyDialogOpen] = useState(false);
 
-  const isTableEmpty = !filteredProducts.length;
+  const isTableEmpty = !paginatedProducts.length;
   const isSelected = selectedProducts.length > 0;
   const emptyTableColSpan = 7;
 
@@ -149,7 +160,7 @@ function CustomTable({ data }: CustomTableProps) {
             </TableHeader>
 
             <TableBody>
-              {sortedProducts.map((product) => (
+              {paginatedProducts.map((product) => (
                 <TableRow key={product.id}>
                   <TableCell>
                     <img
@@ -206,6 +217,33 @@ function CustomTable({ data }: CustomTableProps) {
               )}
             </TableBody>
           </Table>
+
+          {!isTableEmpty && (
+            <div className="flex w-full items-center gap-4 md:justify-end">
+              <p className="hidden md:block">
+                Page {pageIndex} of {pageCount}
+              </p>
+              <div className="w-1/12 shrink-0">
+                <Button
+                  variant={hasPrevPage ? "primary" : "disabled"}
+                  onClick={prevPage}
+                  disabled={!hasPrevPage}
+                >
+                  Previous
+                </Button>
+              </div>
+
+              <div className="w-1/12 shrink-0">
+                <Button
+                  variant={hasNextPage ? "primary" : "disabled"}
+                  onClick={nextPage}
+                  disabled={!hasNextPage}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
