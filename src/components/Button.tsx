@@ -24,7 +24,7 @@ const VARIANTS: Record<Variant, string> = {
 };
 
 const DEFAULT_CLASSES =
-  "w-full rounded-sm px-4 py-2 select-none grid auto-cols-max gap-2 place-content-center grid-flow-col border";
+  "w-full rounded-sm px-4 py-2 select-none grid auto-cols-max gap-2 place-content-center grid-flow-col border min-w-fit";
 
 function Button({ children, variant, icon, ...restProps }: ButtonProps) {
   const isLoading = variant === "loading";
